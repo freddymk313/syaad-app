@@ -1,10 +1,189 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  Image,
+} from "react-native";
+import React, { use } from "react";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import {
+  LockClosedIcon,
+  UserIcon,
+  FingerPrintIcon,
+} from "react-native-heroicons/outline";
+import { SvgProps } from "react-native-svg";
+import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar } from "expo-status-bar";
+import InputField from "@/components/InputField";
+import { useRouter } from "expo-router";
 
-export default function login() {
+type RootStackParamList = {
+  Login: undefined;
+  SignUp: undefined;
+};
+
+type LoginScreenProps = NativeStackScreenProps<RootStackParamList, "Login">;
+
+interface InputFieldProps {
+  Icon: React.FC<SvgProps>;
+  placeholder: string;
+  value: string;
+  onChangeText: (text: string) => void;
+  secureTextEntry?: boolean;
+}
+
+const { height } = Dimensions.get("window");
+const HEADER_HEIGHT = height * 0.28;
+
+export default function LoginScreen({ navigation }: LoginScreenProps) {
+  const [email, setEmail] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+  const route = useRouter();
+
+  const handleSignUpPress = () => {
+    route.navigate("/(auth)/register");
+  };
+
   return (
-    <View>
-      <Text>login</Text>
-    </View>
-  )
+    <KeyboardAvoidingView
+      className="flex-1 bg-blue-700"
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <LinearGradient
+        // colors={["#0088FF", "#005299"]} // du top-left vers bottom-right
+        // start={{ x: 0, y: 0 }} // top-left
+        // end={{ x: 1, y: 1 }} // bottom-right
+        // className="flex-1"
+        colors={["#0088FF", "#005299"]}
+        locations={[0.01, 0.45]} // 1% pour #0088FF, 45% pour #005299
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={{ flex: 1 }}
+      >
+        <View
+          className="flex-1"
+          // showsVerticalScrollIndicator={false}
+          // contentContainerStyle={{ paddingBottom: 40 }}
+        >
+          {/* Header */}
+          <View
+            className="justify-center items-center"
+            style={{ height: HEADER_HEIGHT, paddingTop: 40 }}
+          >
+            <Text className="text-3xl font-semibold text-[#FFFFFF]">
+              Welcome
+            </Text>
+          </View>
+
+          {/* Card */}
+          <ScrollView
+            className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
+            style={{ marginTop: -20, minHeight: height - HEADER_HEIGHT + 20 }}
+          >
+            {/* Champs de saisie */}
+            <View className="mb-5 mt-6">
+              <Text className="text-[#093030] mb-2">Username Or Email</Text>
+              <InputField
+                Icon={UserIcon}
+                placeholder="example@example.com"
+                value={email}
+                onChangeText={setEmail}
+              />
+
+              <Text className="text-[#093030] mb-2 mt-3.5">Password</Text>
+              <InputField
+                Icon={LockClosedIcon}
+                placeholder="********"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+              />
+            </View>
+
+            {/* Log In */}
+            <Pressable
+              className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center"
+              // onPress={()=> router.navigate('/(auth)/login')}
+            >
+              <Text
+                className="text-white"
+                style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+              >
+                Log In
+              </Text>
+            </Pressable>
+
+            {/* Forgot Password */}
+            <TouchableOpacity className="self-center my-6">
+              <Text className="text-sm text-[#093030] font-semibold">
+                Forgot Password?
+              </Text>
+            </TouchableOpacity>
+
+            {/* Sign Up */}
+            <Pressable
+              className="bg-[#F2F2F7] py-4 w-[60%] self-center rounded-full items-center justify-center *border border-[#0088FF]"
+              // onPress={() => router.navigate('/(auth)/register')}
+            >
+              <Text
+                className="text-[#0E3E3E]"
+                style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+              >
+                Sign Up
+              </Text>
+            </Pressable>
+
+            {/* Fingerprint */}
+            <TouchableOpacity className="flex-row items-center justify-center gap-1 mt-6">
+              <FingerPrintIcon width={24} height={24} color="#0088FF" />
+              <Text className="text-sm text-gray-600">
+                Use Fingerprint To Access
+              </Text>
+            </TouchableOpacity>
+
+            {/* google and facebook sign in */}
+            <View className="flex justify-center mt-4 gap-3">
+              <Text className="text-[#093030] text-center text-xs">Or sign in with</Text>
+
+              <View className="flex-row justify-center gap-6">
+                <TouchableOpacity>
+                  <Image
+                    source={require("@/assets/logo/facebook.png")}
+                    className="w-10 h-10"
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                  <Image
+                    source={require("@/assets/logo/google.png")}
+                    className="w-10 h-10"
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            {/* Don't have account */}
+            <View className="flex-row justify-center mt-4">
+              <Text className="text-gray-500">Don't have an account?</Text>
+              <TouchableOpacity onPress={handleSignUpPress}>
+                <Text className="text-[#0088FF] font-semibold ml-1">
+                  Sign Up
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </View>
+      </LinearGradient>
+
+      <StatusBar style="light" />
+    </KeyboardAvoidingView>
+  );
 }
