@@ -28,7 +28,7 @@ export default function LaunchScreen() {
         >
           <Text
             className="text-[#FFFFFF]"
-            // style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+            style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
           >
             Log In
           </Text>
@@ -40,7 +40,7 @@ export default function LaunchScreen() {
         >
           <Text
             className="text-[#0E3E3E]"
-            // style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+            style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
           >
             Sign Up
           </Text>
