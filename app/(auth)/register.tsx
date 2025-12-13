@@ -74,7 +74,6 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
             style={{
               height: HEADER_HEIGHT,
               paddingTop: 40,
-              // display: "flex",
               alignItems: "center",
               justifyContent: "center",
               
