@@ -47,7 +47,9 @@ export default function LaunchScreen() {
         </Pressable>
       </View>
 
-      <Pressable className="mt-6">
+      <Pressable className="mt-6"
+        onPress={()=> router.navigate('/(auth)/forgotpassword')}
+      >
         <Text className="text-[#093030] text-sm font-semibold">Forgot Password?</Text>
       </Pressable>
     </View>
