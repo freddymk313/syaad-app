@@ -154,7 +154,7 @@ export default function NewPasswordScreen({
               <Pressable
                 className="bg-[#0088FF] py-4 w-full rounded-full items-center justify-center mb-16"
                 onPress={handleChangePasswordPress}
-                disabled={!newPassword || newPassword !== confirmPassword || newPassword.length < 6}
+                // disabled={!newPassword || newPassword !== confirmPassword || newPassword.length < 6}
               >
                 <Text
                   // className="text-white"
