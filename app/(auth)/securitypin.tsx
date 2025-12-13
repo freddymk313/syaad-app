@@ -129,17 +129,24 @@ export default function SecurityPinScreen({
             <View className="flex-1 items-center">
               {/* TITRE */}
               <Text
-                style={{ fontFamily: "PoppinsBold" }}
+                style={{
+                  fontFamily: "PoppinsSemiBold",
+                  fontSize: 18,
+                  fontWeight: "600",
+                  marginBottom: 48,
+                  marginTop: 48,
+                  color: "#0E3E3E",
+                }}
                 // className="text-2xl text-[#093030] mt-12 mb-10"
-                className="text-2xl font-bold text-[#0E3E3E] mt-4 mb-2"
+                // className="text-2xl font-bold text-[#0E3E3E] mt-4 mb-2"
               >
                 Enter Security Pin
               </Text>
 
               {/* PIN INPUTS */}
               <View
-                className="flex-row justify-between w-full mb-12"
-                style={{ maxWidth: 300 }}
+                className="flex-row justify-between w-full *max-w-75 space-x-2 px-6 mb-12"
+                // style={{ maxWidth: 300 }}
               >
                 {pin.map((digit, index) => (
                   <TextInput
@@ -157,7 +164,7 @@ export default function SecurityPinScreen({
                       borderWidth: 2,
                       textAlign: "center",
                       fontSize: 18,
-                      fontFamily: "PoppinsBold",
+                      fontFamily: "PoppinsSemiBold",
                       borderColor: pin[index] !== "" ? "#0088FF" : "#E0E0E0",
                       backgroundColor:
                         pin[index] !== "" ? "#E0E0E0" : "#FFFFFF",
@@ -173,8 +180,8 @@ export default function SecurityPinScreen({
                 disabled={pin.join("").length !== PIN_LENGTH}
               >
                 <Text
-                  style={{ fontFamily: "PoppinsBold" }}
-                  className="text-white text-[15px]"
+                  style={{ fontFamily: "PoppinsBold", color: "#FFFFFF", fontSize: 15 }}
+                  // className="text-white text-[15px]"
                 >
                   Accept
                 </Text>
@@ -185,7 +192,7 @@ export default function SecurityPinScreen({
                 onPress={handleSendAgainPress}
                 className="mb-16"
               >
-                <Text className="text-[#0088FF] text-base font-semibold">
+                <Text className="text-[#0088FF] text-base mt-4 font-semibold">
                   Send Again
                 </Text>
               </TouchableOpacity>
