@@ -29,7 +29,6 @@ export default function OnboardingItem({ item }: { item: any }) {
           justifyContent: "flex-end",
           alignItems: "center",
         }}
-        // className="border border-blue-500"
       >
         <Image
           source={item.image}
@@ -38,6 +37,7 @@ export default function OnboardingItem({ item }: { item: any }) {
             height: height * 0.7, 
             resizeMode: "cover", 
           }}
+          // className="object-contain"
         />
       </View>
 

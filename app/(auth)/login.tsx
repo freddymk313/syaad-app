@@ -44,10 +44,10 @@ const HEADER_HEIGHT = height * 0.28;
 export default function LoginScreen({ navigation }: LoginScreenProps) {
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
-  const route = useRouter();
+  const router = useRouter();
 
   const handleSignUpPress = () => {
-    route.navigate("/(auth)/register");
+    router.navigate("/(auth)/register");
   };
 
   return (
@@ -121,7 +121,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             {/* Log In */}
             <Pressable
               className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center"
-              // onPress={()=> router.navigate('/(auth)/login')}
+              onPress={()=> router.navigate('/(tabs)/home')}
             >
               <Text
                 className="text-white"

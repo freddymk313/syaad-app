@@ -76,7 +76,6 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
               paddingTop: 40,
               alignItems: "center",
               justifyContent: "center",
-              
             }}
           >
             <Text className="text-3xl font-semibold text-center text-[#FFFFFF]">
