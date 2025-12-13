@@ -8,8 +8,8 @@ export default function NextButton({ onPress }: { onPress: () => void }) {
       className="bg-[#0088FF] py-4 rounded-full items-center justify-center w-full"
     >
       <Text
-        className="text-white"
-        style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+        // className="text-white"
+        style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#FFFFFF" }}
       >
         Next
       </Text>
