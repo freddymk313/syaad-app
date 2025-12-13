@@ -70,7 +70,7 @@ export default function NewPasswordScreen({
     
     // Navigation vers l'écran de succès (3.2 - C - Password Changed Succesfully)
     // J'ai inclus l'écran de succès dans les fichiers joints, il est logique de naviguer vers lui.
-    // router.navigate("/(auth)/success-password-changed"); 
+    router.navigate("/(auth)/password-changed-success"); 
   };
 
   const handleSignUpPress = () => {
@@ -132,7 +132,7 @@ export default function NewPasswordScreen({
               </View>
 
               {/* CONFIRMER MOT DE PASSE */}
-              <View className="w-full mb-12">
+              <View className="w-full mb-6">
                 <Text className="text-[#093030] mb-2 font-semibold">Confirm Password</Text>
                 {/* Utilisez votre composant InputField ici */}
                 <InputField
