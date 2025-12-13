@@ -69,7 +69,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
         >
           {/* Header */}
           <View
-            className="justify-center items-center"
+            className="flex justify-center items-center border-2 border-red-500"
             style={{ height: HEADER_HEIGHT, paddingTop: 40 }}
           >
             <Text className="text-3xl font-semibold text-[#FFFFFF]">
@@ -79,16 +79,16 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
 
           {/* Card */}
           <ScrollView
-            className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 border-2 shadow-2xl"
-            style={{ marginTop: -20, minHeight: height - HEADER_HEIGHT + 20 }}
+            className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
+            // style={{ marginTop: -20, minHeight: height - HEADER_HEIGHT + 20 }}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
-              paddingHorizontal: 25,
-              backgroundColor: "#FFFFFF",
-              paddingVertical: 32,
-              paddingBottom: 40,
-              borderTopStartRadius: 60, 
-              borderTopEndRadius: 60
+              // paddingHorizontal: 25,
+              // backgroundColor: "#FFFFFF",
+              // paddingVertical: 32,
+              // paddingBottom: 40,
+              // borderTopStartRadius: 60, 
+              // borderTopEndRadius: 60
             }}
           >
             {/* Champs de saisie */}

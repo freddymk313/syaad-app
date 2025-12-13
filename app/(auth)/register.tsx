@@ -83,13 +83,13 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
             // className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
             // style={{ marginTop: -20, minHeight: height - HEADER_HEIGHT + 20, paddingBottom: 40 }}
             // showsVerticalScrollIndicator={false}
-            className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 shadow-2xl"
-            style={{ marginTop: -20 }}
-            // contentContainerStyle={{ paddingBottom: 80 }} // pour que le bas soit visible
+            className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
+            // style={{ marginTop: -20 }}
+            contentContainerStyle={{ paddingBottom: 40 }} // pour que le bas soit visible
             // showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
             keyboardDismissMode="on-drag"
-            contentContainerStyle={{ paddingBottom: 80 }}
+            // contentContainerStyle={{ paddingBottom: 80 }}
             showsVerticalScrollIndicator={false}
           >
             {/* Champs de Saisie */}
