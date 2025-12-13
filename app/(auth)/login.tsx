@@ -52,14 +52,10 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
 
   return (
     <KeyboardAvoidingView
-      className="flex-1 bg-blue-700"
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      className="flex-1"
+      // behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <LinearGradient
-        // colors={["#0088FF", "#005299"]} // du top-left vers bottom-right
-        // start={{ x: 0, y: 0 }} // top-left
-        // end={{ x: 1, y: 1 }} // bottom-right
-        // className="flex-1"
         colors={["#0088FF", "#005299"]}
         locations={[0.01, 0.45]} // 1% pour #0088FF, 45% pour #005299
         start={{ x: 0, y: 0 }}
@@ -83,8 +79,17 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
 
           {/* Card */}
           <ScrollView
-            className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
+            className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 border-2 shadow-2xl"
             style={{ marginTop: -20, minHeight: height - HEADER_HEIGHT + 20 }}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+              paddingHorizontal: 25,
+              backgroundColor: "#FFFFFF",
+              paddingVertical: 32,
+              paddingBottom: 40,
+              borderTopStartRadius: 60, 
+              borderTopEndRadius: 60
+            }}
           >
             {/* Champs de saisie */}
             <View className="mb-5 mt-6">
@@ -149,7 +154,9 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
 
             {/* google and facebook sign in */}
             <View className="flex justify-center mt-4 gap-3">
-              <Text className="text-[#093030] text-center text-xs">Or sign in with</Text>
+              <Text className="text-[#093030] text-center text-xs">
+                Or sign in with
+              </Text>
 
               <View className="flex-row justify-center gap-6">
                 <TouchableOpacity>

@@ -46,8 +46,8 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
   const [confirmPassword, setConfirmPassword] = React.useState<string>("");
 
   const handleLoginPress = () => {
-    // router.navigate("/(auth)/login"); // Naviguer vers l'écran de connexion
-    router.back();
+    router.navigate("/(auth)/login"); // Naviguer vers l'écran de connexion
+    // router.back();
   };
 
   const handleRegister = () => {
