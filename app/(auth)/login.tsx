@@ -124,8 +124,8 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
               onPress={()=> router.navigate('/(tabs)/home')}
             >
               <Text
-                className="text-white"
-                style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+                // className="text-white"
+                style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#FFFFFF" }}
               >
                 Log In
               </Text>
@@ -144,8 +144,8 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
               onPress={handleSignUpPress}
             >
               <Text
-                className="text-[#0E3E3E]"
-                style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+                // className="text-[#0E3E3E]"
+                style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#0E3E3E" }}
               >
                 Sign Up
               </Text>
