@@ -69,8 +69,15 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
         >
           {/* Header */}
           <View
-            className="flex justify-center items-center border-2 border-red-500"
-            style={{ height: HEADER_HEIGHT, paddingTop: 40 }}
+            // className="flex justify-center items-center border-2 border-red-500"
+            // style={{ height: HEADER_HEIGHT, paddingTop: 40 }}
+            style={{
+              height: HEADER_HEIGHT,
+              paddingTop: 40,
+              alignItems: "center",
+              justifyContent: "center",
+              
+            }}
           >
             <Text className="text-3xl font-semibold text-[#FFFFFF]">
               Welcome
