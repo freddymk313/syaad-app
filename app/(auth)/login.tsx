@@ -154,7 +154,9 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             </Pressable>
 
             {/* Fingerprint */}
-            <TouchableOpacity className="flex-row items-center justify-center gap-1 mt-6">
+            <TouchableOpacity className="flex-row items-center justify-center gap-1 mt-6"
+              onPress={()=> router.navigate('/(auth)/security-fingerprint')}
+            >
               <FingerPrintIcon width={24} height={24} color="#0088FF" />
               <Text className="text-sm text-gray-600">
                 Use Fingerprint To Access
