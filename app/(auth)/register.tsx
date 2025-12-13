@@ -57,7 +57,7 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
 
   return (
     <KeyboardAvoidingView
-      className="flex-1 bg-blue-700"
+      className="flex-1"
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <LinearGradient
@@ -70,10 +70,17 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
         <View className="flex-1">
           {/* Header */}
           <View
-            className="justify-center items-center"
-            style={{ height: HEADER_HEIGHT, paddingTop: 40 }}
+            // className="flex justify-center items-center"
+            style={{
+              height: HEADER_HEIGHT,
+              paddingTop: 40,
+              // display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              
+            }}
           >
-            <Text className="text-3xl font-semibold text-[#FFFFFF]">
+            <Text className="text-3xl font-semibold text-center text-[#FFFFFF]">
               Create Account
             </Text>
           </View>
