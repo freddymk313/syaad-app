@@ -141,7 +141,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             {/* Sign Up */}
             <Pressable
               className="bg-[#F2F2F7] py-4 w-[60%] self-center rounded-full items-center justify-center *border border-[#0088FF]"
-              // onPress={() => router.navigate('/(auth)/register')}
+              onPress={handleSignUpPress}
             >
               <Text
                 className="text-[#0E3E3E]"
