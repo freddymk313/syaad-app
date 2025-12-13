@@ -11,9 +11,7 @@ import {
 } from "react-native";
 import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import {
-  UserIcon,
-} from "react-native-heroicons/outline";
+import { UserIcon } from "react-native-heroicons/outline";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import InputField from "@/components/InputField"; // Assurez-vous que ce chemin est correct
@@ -35,7 +33,10 @@ type RootStackParamList = {
   SignUp: undefined;
 };
 
-type ForgotPasswordScreenProps = NativeStackScreenProps<RootStackParamList, "ForgotPassword">;
+type ForgotPasswordScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+  "ForgotPassword"
+>;
 
 // Interface pour le composant InputField (copiée de votre référence)
 interface InputFieldProps {
@@ -46,11 +47,12 @@ interface InputFieldProps {
   secureTextEntry?: boolean;
 }
 
-
 const { height } = Dimensions.get("window");
 const HEADER_HEIGHT = height * 0.28; // Hauteur de la zone dégradée
 
-export default function ForgotPasswordScreen({ navigation }: ForgotPasswordScreenProps) {
+export default function ForgotPasswordScreen({
+  navigation,
+}: ForgotPasswordScreenProps) {
   const [email, setEmail] = React.useState<string>("");
   const router = useRouter();
 
@@ -106,14 +108,16 @@ export default function ForgotPasswordScreen({ navigation }: ForgotPasswordScree
             }}
           >
             <View className="flex-1 items-center">
-              
               {/* Titre et description */}
-              <Text className="text-2xl font-bold text-[#093030] mt-4 mb-2">
-                Reset Password?
-              </Text>
-              <Text className="text-center text-gray-500 mb-8 max-w-[80%]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </Text>
+              <View className="w-full">
+                <Text className="text-2xl font-bold text-[#0E3E3E] mt-4 mb-2">
+                  Reset Password?
+                </Text>
+                <Text className="text-[#0E3E3E] mb-8 text-[14px] text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </Text>
+              </View>
 
               {/* Champ de saisie Email */}
               <View className="w-full mb-8">
@@ -168,25 +172,29 @@ export default function ForgotPasswordScreen({ navigation }: ForgotPasswordScree
 
                 {/* Lien Sign Up / Don't have an account? */}
                 <Pressable
-                    className="bg-white border border-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center mb-4"
-                    onPress={handleSignUpPress}
+                  className="bg-[#F2F2F7] py-4 w-[60%] self-center rounded-full items-center justify-center *border border-[#0088FF]"
+                  onPress={handleSignUpPress}
                 >
-                    <Text
-                    className="text-[#0088FF]"
-                    style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
-                    >
+                  <Text
+                    // className="text-[#0E3E3E]"
+                    style={{
+                      fontFamily: "PoppinsBold",
+                      fontSize: 15,
+                      color: "#0E3E3E",
+                    }}
+                  >
                     Sign Up
-                    </Text>
+                  </Text>
                 </Pressable>
-                
-                <View className="flex-row justify-center mt-4">
+
+                {/* <View className="flex-row justify-center mt-4">
                   <Text className="text-gray-500">Don't have an account?</Text>
                   <TouchableOpacity onPress={handleSignUpPress}>
                     <Text className="text-[#0088FF] font-semibold ml-1">
                       Sign Up
                     </Text>
                   </TouchableOpacity>
-                </View>
+                </View> */}
               </View>
 
               {/* Lien Don't have an account? Sign Up (en bas) */}
@@ -198,7 +206,6 @@ export default function ForgotPasswordScreen({ navigation }: ForgotPasswordScree
                   </Text>
                 </TouchableOpacity>
               </View>
-              
             </View>
           </ScrollView>
         </View>

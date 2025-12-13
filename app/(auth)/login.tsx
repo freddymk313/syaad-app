@@ -132,7 +132,9 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             </Pressable>
 
             {/* Forgot Password */}
-            <TouchableOpacity className="self-center my-6">
+            <TouchableOpacity className="self-center my-6" 
+              onPress={() => router.navigate('/(auth)/forgotpassword')}
+            >
               <Text className="text-sm text-[#093030] font-semibold">
                 Forgot Password?
               </Text>
