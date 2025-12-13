@@ -109,11 +109,11 @@ export default function ForgotPasswordScreen({
           >
             <View className="flex-1 items-center">
               {/* Titre et description */}
-              <View className="w-full">
+              <View className="w-full mb-2">
                 <Text className="text-2xl font-bold text-[#0E3E3E] mt-4 mb-2">
                   Reset Password?
                 </Text>
-                <Text className="text-[#0E3E3E] mb-8 text-[14px] text-justify">
+                <Text className="text-sm text-[#0E3E3E] mb-8 text-justify">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </Text>
