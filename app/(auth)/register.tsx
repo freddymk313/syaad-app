@@ -162,8 +162,8 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
               onPress={handleRegister}
             >
               <Text
-                className="text-white"
-                style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+                // className="text-white"
+                style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#FFFFFF" }}
               >
                 Sign Up
               </Text>
