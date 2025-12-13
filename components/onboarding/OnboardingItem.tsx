@@ -16,6 +16,7 @@ export default function OnboardingItem({ item }: { item: any }) {
             textAlign: "center",
             marginBottom: 20,
             fontWeight: "bold",
+            color: "#000000",
           }}
         >
           {item.title}
