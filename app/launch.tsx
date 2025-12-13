@@ -24,11 +24,14 @@ export default function LaunchScreen() {
       <View className="w-full *max-w-xs gap-4">
         <Pressable
           className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center"
-          onPress={()=> router.navigate('/(auth)/login')} 
+          onPress={() => router.navigate("/(auth)/login")}
         >
           <Text
-            className="text-[#FFFFFF]"
-            style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+            style={{
+              fontFamily: "PoppinsBold",
+              fontSize: 15,
+              color: "#FFFFFF",
+            }}
           >
             Log In
           </Text>
@@ -36,21 +39,28 @@ export default function LaunchScreen() {
 
         <Pressable
           className="bg-[#F2F2F7] py-4 w-[60%] self-center rounded-full items-center justify-center *border border-[#0088FF]"
-          onPress={() => router.navigate('/(auth)/register')} 
+          onPress={() => router.navigate("/(auth)/register")}
         >
           <Text
-            className="text-[#0E3E3E]"
-            style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+            // className="text-[#0E3E3E]"
+            style={{
+              fontFamily: "PoppinsBold",
+              fontSize: 15,
+              color: "#0E3E3E",
+            }}
           >
             Sign Up
           </Text>
         </Pressable>
       </View>
 
-      <Pressable className="mt-6"
-        onPress={()=> router.navigate('/(auth)/forgotpassword')}
+      <Pressable
+        className="mt-6"
+        onPress={() => router.navigate("/(auth)/forgotpassword")}
       >
-        <Text className="text-[#093030] text-sm font-semibold">Forgot Password?</Text>
+        <Text className="text-[#093030] text-sm font-semibold">
+          Forgot Password?
+        </Text>
       </Pressable>
     </View>
   );
