@@ -17,6 +17,7 @@ import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
 import { LockClosedIcon } from "react-native-heroicons/outline"; // Pour l'icône de mot de passe
 import { SvgProps } from "react-native-svg";
+import InputField from "@/components/InputField";
 
 // Importez votre composant InputField si disponible. 
 // Je vais supposer son existence et sa structure.
@@ -76,22 +77,6 @@ export default function NewPasswordScreen({
     router.navigate("/(auth)/register");
   };
 
-  // REMPLACER ceci par votre composant InputField si vous l'avez
-  const DummyInputField = ({ placeholder, value, onChangeText, secureTextEntry = false }: any) => (
-    <View className="flex-row items-center border border-gray-300 rounded-full px-4 py-3 bg-[#F2F2F7] mb-4">
-      <LockClosedIcon color="#A0A0A0" size={24} className="mr-3" />
-      <TextInput
-        placeholder={placeholder}
-        value={value}
-        onChangeText={onChangeText}
-        secureTextEntry={secureTextEntry}
-        className="flex-1 text-[#0E3E3E]"
-        placeholderTextColor="#A0A0A0"
-      />
-    </View>
-  );
-
-
   return (
     <KeyboardAvoidingView
       className="flex-1"
@@ -131,38 +116,38 @@ export default function NewPasswordScreen({
               <View className="w-full mb-4">
                 <Text className="text-[#093030] mb-2 font-semibold">New Password</Text>
                 {/* Utilisez votre composant InputField ici */}
-                {/* <InputField
+                <InputField
                   Icon={LockClosedIcon}
                   placeholder="********"
                   value={newPassword}
                   onChangeText={setNewPassword}
                   secureTextEntry
-                /> */}
-                <DummyInputField
+                />
+                {/* <DummyInputField
                   placeholder="********"
                   value={newPassword}
                   onChangeText={setNewPassword}
                   secureTextEntry
-                />
+                /> */}
               </View>
 
               {/* CONFIRMER MOT DE PASSE */}
               <View className="w-full mb-12">
                 <Text className="text-[#093030] mb-2 font-semibold">Confirm Password</Text>
                 {/* Utilisez votre composant InputField ici */}
-                {/* <InputField
+                <InputField
                   Icon={LockClosedIcon}
                   placeholder="********"
                   value={confirmPassword}
                   onChangeText={setConfirmPassword}
                   secureTextEntry
-                /> */}
-                <DummyInputField
+                />
+                {/* <DummyInputField
                   placeholder="********"
                   value={confirmPassword}
                   onChangeText={setConfirmPassword}
                   secureTextEntry
-                />
+                /> */}
               </View>
 
               {/* CHANGE PASSWORD BUTTON */}
