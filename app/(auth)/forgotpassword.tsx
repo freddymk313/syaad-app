@@ -136,8 +136,8 @@ export default function ForgotPasswordScreen({
                 onPress={handleNextStepPress}
               >
                 <Text
-                  className="text-white"
-                  style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+                  // className="text-white"
+                  style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#FFFFFF" }}
                 >
                   Next Step
                 </Text>
