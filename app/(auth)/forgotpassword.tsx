@@ -59,8 +59,7 @@ export default function ForgotPasswordScreen({
   const handleNextStepPress = () => {
     // Logique pour l'étape suivante (ex: envoi d'un email de réinitialisation)
     console.log("Next Step pressed with email:", email);
-    // Ici, vous pourriez naviguer vers l'écran de vérification du code
-    // router.navigate("/(auth)/verification");
+    router.navigate("/(auth)/securitypin");
   };
 
   const handleSignUpPress = () => {
