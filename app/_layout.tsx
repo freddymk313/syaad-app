@@ -1,21 +1,40 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-import './../global.css';
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from "@react-navigation/native";
+import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import "react-native-reanimated";
+import "./../global.css";
+import { useFonts } from "expo-font";
+import { useColorScheme } from "@/hooks/use-color-scheme";
+import { useEffect } from "react";
+import * as SplashScreen from "expo-splash-screen";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { useEffect } from 'react';
+SplashScreen.preventAutoHideAsync();
 
-// export const unstable_settings = {
-//   anchor: '(tabs)',
-// };
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
+  const [loaded] = useFonts({
+    PoppinsRegular: require("../assets/fonts/Poppins-Regular.ttf"),
+    PoppinsMedium: require("../assets/fonts/Poppins-Medium.ttf"),
+    PoppinsSemiBold: require("../assets/fonts/Poppins-SemiBold.ttf"),
+    PoppinsBold: require("../assets/fonts/Poppins-Bold.ttf"),
+  });
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) return null;
+
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack screenOptions={{ headerShown: false}}>
+    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+      <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="onboarding" />
         <Stack.Screen name="launch" />
         <Stack.Screen name="(auth)" />
