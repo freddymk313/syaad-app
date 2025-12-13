@@ -74,7 +74,7 @@ export default function SecurityPinScreen({
     const fullPin = pin.join("");
     if (fullPin.length === PIN_LENGTH) {
       console.log("PIN Accepted:", fullPin);
-      // router.navigate("/(auth)/reset-password");
+      router.navigate("/(auth)/new-password");
     }
   };
 
