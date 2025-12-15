@@ -2,10 +2,23 @@ import { PlatformPressable, Text } from "@react-navigation/elements";
 import { useTheme } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native";
 import { useLinkBuilder } from "@react-navigation/native";
+import Feather from "@expo/vector-icons/Feather";
+import FontAwesome5 from "@expo/vector-icons/Feather";
+import Ionicons from "@expo/vector-icons/Feather";
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
+    const icons = {
+        index: (props: any) => <Feather name="home" {...props} />,
+        transfert: (props: any) => <FontAwesome5 name="exchange-alt" {...props} />,
+        settings: (props: any) => <Ionicons name="settings-sharp" {...props} />,
+        profile: (props: any) => <Feather name="user" {...props} />,
+    }
+
   const colors = useTheme().colors;
   const { buildHref } = useLinkBuilder();
+
+  const primaryColor = "#0088FF";
+  const grayColor = "#A0A0A0";
 
   return (
     <View className="flex-row w-full h-27 bg-[#DFEFF8] rounded-[70px]">
@@ -52,7 +65,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
             onLongPress={onLongPress}
             style={{ flex: 1 }}
           >
-            <Text style={{ color: isFocused ? colors.primary : colors.text }}>
+            <Text style={{ color: isFocused ? primaryColor : grayColor }}>
               {label}
             </Text>
           </PlatformPressable>
