@@ -95,19 +95,19 @@ export default function SecurityFingerprintScreen({
                   width: FINGERPRINT_ICON_SIZE,
                   height: FINGERPRINT_ICON_SIZE,
                   borderRadius: FINGERPRINT_ICON_SIZE / 2,
-                  backgroundColor: "#F2F2F7", // Couleur de fond du cercle
+                  backgroundColor: "#3299FF", // Couleur de fond du cercle
                   alignItems: "center",
                   justifyContent: "center",
                 }}
                 className="mb-10"
               >
                 {/* Icône d'Empreinte Digitale au centre */}
-                <FingerPrintIcon color="#0088FF" size={FINGERPRINT_ICON_SIZE * 0.6} />
+                <FingerPrintIcon color="#E9F6FE" size={FINGERPRINT_ICON_SIZE * 0.6} />
               </View>
 
               {/* Message d'instruction */}
               <Text
-                className="text-[#093030] text-center text-lg font-semibold mb-2"
+                className="text-[#093030] text-center text-lg font-semibold mt-9 mb-2"
               >
                 Use Fingerprint To Access
               </Text>
@@ -120,12 +120,12 @@ export default function SecurityFingerprintScreen({
 
               {/* Bouton Touch ID */}
               <Pressable
-                className="bg-[#0088FF] py-4 w-[60%] rounded-full items-center justify-center mb-8"
+                className="bg-[#DFEFF8] py-4 w-[60%] rounded-full items-center justify-center mb-8"
                 onPress={handleUseTouchIdPress}
               >
                 <Text
-                  className="text-white"
-                  style={{ fontFamily: "PoppinsBold", fontSize: 15 }}
+                  // className="text-white"
+                  style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#0E3E3E" }}
                 >
                   Use Touch Id
                 </Text>
