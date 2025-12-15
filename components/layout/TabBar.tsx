@@ -9,6 +9,7 @@ import { StyleSheet, View } from "react-native";
 const TabBar = ({ state, descriptors, navigation }: any) => {
   const icons: Record<string, (props: any) => React.ReactElement | null> = {
     home: (props: any) => <Feather name="home" {...props} />,
+    search: (props: any) => <Feather name="search" {...props} />,
     transfert: (props: any) => <FontAwesome5 name="exchange-alt" {...props} />,
     settings: (props: any) => <Ionicons name="settings-sharp" {...props} />,
     profile: (props: any) => <Feather name="user" {...props} />,
@@ -18,7 +19,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
   const { buildHref } = useLinkBuilder();
 
   const primaryColor = colors?.primary ?? "#0088FF";
-  const grayColor = "#A0A0A0";
+  const grayColor = "#052224";
 
   return (
     <View className="flex-row w-full h-27 bg-[#DFEFF8] rounded-[70px]">
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 4,
+    // paddingVertical: 4,
   },
   label: {
     fontSize: 12,
