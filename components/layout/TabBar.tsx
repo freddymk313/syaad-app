@@ -22,7 +22,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
   const grayColor = "#052224";
 
   return (
-    <View className="flex-row w-full h-27 bg-[#DFEFF8] rounded-[70px]">
+    <View className="flex-row w-full h-27 px-4 bg-[#DFEFF8] rounded-[70px]">
       {state.routes.map((route: any, index: number) => {
         const { options } = descriptors[route.key];
         const label =
