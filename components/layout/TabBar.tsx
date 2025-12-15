@@ -1,28 +1,28 @@
-import { PlatformPressable, Text } from "@react-navigation/elements";
-import { useTheme } from "@react-navigation/native";
-import { StyleSheet, View } from "react-native";
-import { useLinkBuilder } from "@react-navigation/native";
 import Feather from "@expo/vector-icons/Feather";
-import FontAwesome5 from "@expo/vector-icons/Feather";
-import Ionicons from "@expo/vector-icons/Feather";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { PlatformPressable } from "@react-navigation/elements";
+import { useLinkBuilder, useTheme } from "@react-navigation/native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
-    const icons = {
-        index: (props: any) => <Feather name="home" {...props} />,
+    const icons: Record<string, (props: any) => React.ReactElement | null> = {
+        home: (props: any) => <FontAwesome5 name="home" {...props} />,
         transfert: (props: any) => <FontAwesome5 name="exchange-alt" {...props} />,
         settings: (props: any) => <Ionicons name="settings-sharp" {...props} />,
         profile: (props: any) => <Feather name="user" {...props} />,
-    }
+    };
 
-  const colors = useTheme().colors;
+  const { colors } = useTheme();
   const { buildHref } = useLinkBuilder();
 
-  const primaryColor = "#0088FF";
+  const primaryColor = colors?.primary ?? "#0088FF";
   const grayColor = "#A0A0A0";
 
   return (
-    <View className="flex-row w-full h-27 bg-[#DFEFF8] rounded-[70px]">
-      {state.routes.map((route: any, index: any) => {
+    <View style={styles.container}>
+      {state.routes.map((route: any, index: number) => {
         const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
@@ -32,8 +32,6 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
             : route.name;
 
         const isFocused = state.index === index;
-
-        // console.log("Route: ", route.name, "isFocused:", isFocused);
 
         const onPress = () => {
           const event = navigation.emit({
@@ -54,6 +52,11 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
           });
         };
 
+        const key = (route.name ?? "").toLowerCase();
+        const Icon = icons[key];
+        if (!Icon) {
+          console.warn(`No icon found for route "${route.name}" (normalized "${key}")`);
+        }
         return (
           <PlatformPressable
             href={buildHref(route.name, route.params)}
@@ -63,11 +66,9 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
             testID={options.tabBarButtonTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{ flex: 1 }}
+            style={styles.tabItem}
           >
-            <Text style={{ color: isFocused ? primaryColor : grayColor }}>
-              {label}
-            </Text>
+            {Icon?.({ size: 24, color: isFocused ? primaryColor : grayColor })}
           </PlatformPressable>
         );
       })}
@@ -76,6 +77,26 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    width: "100%",
+    height: 54,
+    backgroundColor: "#DFEFF8",
+    borderRadius: 70,
+    alignItems: "center",
+    justifyContent: "space-around",
+    paddingHorizontal: 8,
+  },
+  tabItem: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 8,
+  },
+  label: {
+    fontSize: 12,
+    marginTop: 4,
+  },
   tabBar: {
     flexDirection: "row",
     height: 60,
