@@ -1,25 +1,30 @@
-import { PlatformPressable, Text } from '@react-navigation/elements';
-import { useTheme } from '@react-navigation/native';
-import { View } from 'react-native';
+import { PlatformPressable, Text } from "@react-navigation/elements";
+import { useTheme } from "@react-navigation/native";
+import { StyleSheet, View } from "react-native";
+import { useLinkBuilder } from "@react-navigation/native";
 
-const TabBar = ({state, descriptors, navigation}: any) => {
+const TabBar = ({ state, descriptors, navigation }: any) => {
   const colors = useTheme().colors;
+  const { buildHref } = useLinkBuilder();
+
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View className="flex-row w-full h-27 bg-[#DFEFF8] rounded-[70px]">
       {state.routes.map((route: any, index: any) => {
         const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
             : options.title !== undefined
-              ? options.title
-              : route.name;
+            ? options.title
+            : route.name;
 
         const isFocused = state.index === index;
 
+        // console.log("Route: ", route.name, "isFocused:", isFocused);
+
         const onPress = () => {
           const event = navigation.emit({
-            type: 'tabPress',
+            type: "tabPress",
             target: route.key,
             canPreventDefault: true,
           });
@@ -31,14 +36,14 @@ const TabBar = ({state, descriptors, navigation}: any) => {
 
         const onLongPress = () => {
           navigation.emit({
-            type: 'tabLongPress',
+            type: "tabLongPress",
             target: route.key,
           });
         };
 
         return (
           <PlatformPressable
-            href={(route.name, route.params)}
+            href={buildHref(route.name, route.params)}
             key={route.key}
             accessibilityState={isFocused ? { selected: true } : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
@@ -54,7 +59,17 @@ const TabBar = ({state, descriptors, navigation}: any) => {
         );
       })}
     </View>
-  )
-}
+  );
+};
 
-export default TabBar
+const styles = StyleSheet.create({
+  tabBar: {
+    flexDirection: "row",
+    height: 60,
+    borderTopWidth: 1,
+    borderTopColor: "#e0e0e0",
+    backgroundColor: "#ffffff",
+  },
+});
+
+export default TabBar;
