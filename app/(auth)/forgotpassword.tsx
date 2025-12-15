@@ -1,21 +1,21 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  Image,
-} from "react-native";
-import React from "react";
+import InputField from "@/components/form/InputField"; // Assurez-vous que ce chemin est correct
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { UserIcon } from "react-native-heroicons/outline";
 import { LinearGradient } from "expo-linear-gradient";
-import { StatusBar } from "expo-status-bar";
-import InputField from "@/components/InputField"; // Assurez-vous que ce chemin est correct
 import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import {
+    Dimensions,
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    Pressable,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
+import { UserIcon } from "react-native-heroicons/outline";
 import { SvgProps } from "react-native-svg"; // Nécessaire pour le type Icon
 
 // ********************************************

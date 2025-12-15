@@ -1,23 +1,20 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  Image,
-} from "react-native";
-import React, { useState } from "react";
+import InputField from "@/components/form/InputField";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
-import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
+import {
+    Dimensions,
+    KeyboardAvoidingView,
+    Platform,
+    Pressable,
+    ScrollView,
+    Text,
+    View
+} from "react-native";
 import { LockClosedIcon } from "react-native-heroicons/outline"; // Pour l'icône de mot de passe
 import { SvgProps } from "react-native-svg";
-import InputField from "@/components/InputField";
 
 // Importez votre composant InputField si disponible. 
 // Je vais supposer son existence et sa structure.

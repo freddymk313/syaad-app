@@ -1,27 +1,25 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  Image,
-} from "react-native";
-import React, { use } from "react";
+import InputField from "@/components/form/InputField";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import React from "react";
 import {
+  Dimensions,
+  Image,
+  KeyboardAvoidingView,
+  Pressable,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
+import {
+  FingerPrintIcon,
   LockClosedIcon,
   UserIcon,
-  FingerPrintIcon,
 } from "react-native-heroicons/outline";
 import { SvgProps } from "react-native-svg";
-import { LinearGradient } from "expo-linear-gradient";
-import { StatusBar } from "expo-status-bar";
-import InputField from "@/components/InputField";
-import { useRouter } from "expo-router";
 
 type RootStackParamList = {
   Login: undefined;
