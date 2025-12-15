@@ -7,12 +7,12 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
-    const icons: Record<string, (props: any) => React.ReactElement | null> = {
-        home: (props: any) => <FontAwesome5 name="home" {...props} />,
-        transfert: (props: any) => <FontAwesome5 name="exchange-alt" {...props} />,
-        settings: (props: any) => <Ionicons name="settings-sharp" {...props} />,
-        profile: (props: any) => <Feather name="user" {...props} />,
-    };
+  const icons: Record<string, (props: any) => React.ReactElement | null> = {
+    home: (props: any) => <Feather name="home" {...props} />,
+    transfert: (props: any) => <FontAwesome5 name="exchange-alt" {...props} />,
+    settings: (props: any) => <Ionicons name="settings-sharp" {...props} />,
+    profile: (props: any) => <Feather name="user" {...props} />,
+  };
 
   const { colors } = useTheme();
   const { buildHref } = useLinkBuilder();
@@ -21,7 +21,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
   const grayColor = "#A0A0A0";
 
   return (
-    <View style={styles.container}>
+    <View className="flex-row w-full h-27 bg-[#DFEFF8] rounded-[70px]">
       {state.routes.map((route: any, index: number) => {
         const { options } = descriptors[route.key];
         const label =
@@ -55,7 +55,9 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
         const key = (route.name ?? "").toLowerCase();
         const Icon = icons[key];
         if (!Icon) {
-          console.warn(`No icon found for route "${route.name}" (normalized "${key}")`);
+          console.warn(
+            `No icon found for route "${route.name}" (normalized "${key}")`
+          );
         }
         return (
           <PlatformPressable
@@ -66,9 +68,15 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
             testID={options.tabBarButtonTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={styles.tabItem}
+            style={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
           >
-            {Icon?.({ size: 24, color: isFocused ? primaryColor : grayColor })}
+            <View style={[styles.iconWrapper, isFocused && { backgroundColor: primaryColor }]}>
+              {Icon?.({ size: 24, color: isFocused ? "#FFFFFF" : grayColor })}
+            </View>
           </PlatformPressable>
         );
       })}
@@ -91,7 +99,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 8,
+    paddingVertical: 4,
   },
   label: {
     fontSize: 12,
@@ -103,6 +111,13 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: "#e0e0e0",
     backgroundColor: "#ffffff",
+  },
+  iconWrapper: {
+    width: 54,
+    height: 51,
+    borderRadius: 22,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
