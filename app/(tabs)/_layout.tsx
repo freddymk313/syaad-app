@@ -7,10 +7,6 @@ export default function TabsLayout() {
       tabBar={(props) => <TabBar {...props} />}
       screenOptions={{
         headerShown: false,
-        // tabBarStyle: {
-        //   backgroundColor: "transparent",
-        //   elevation: 0, // Android
-        // },
       }}
     >
       <Tabs.Screen name="home" />

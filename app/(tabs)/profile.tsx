@@ -43,7 +43,7 @@ export default function ProfileScreen() {
             <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
 
-          <Text className="text-white text-xl font-semibold">Profile</Text>
+          <Text className="text-white text-xl font-bold fontp">Profile</Text>
 
           <Pressable className="bg-[#DFEFF8] p-1 rounded-full">
             <Ionicons name="notifications-outline" size={20} color="#093030" />
@@ -65,8 +65,8 @@ export default function ProfileScreen() {
             width: AVATAR_SIZE,
             height: AVATAR_SIZE,
             borderRadius: AVATAR_SIZE / 2,
-            borderWidth: 4,
-            borderColor: "#fff",
+            // borderWidth: 4,
+            // borderColor: "#fff",
           }}
         />
       </View>
