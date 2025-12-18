@@ -38,7 +38,7 @@ export default function ProfileScreen() {
         {/* HEADER */}
         <View className="flex-row items-center justify-between px-6 pt-17">
           <Pressable onPress={() => router.back()}>
-            <Feather name="arrow-left" size={24} color="white" />
+            <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
 
           <Text className="text-white text-xl font-semibold">Profile</Text>
@@ -121,15 +121,15 @@ export default function ProfileScreen() {
         </View>
 
         {/* MENU */}
-        <View className="space-y-6">
+        <View className="gap-6">
           {menuItems.map((item, index) => (
             <Pressable
               key={index}
               onPress={item.onPress}
               className="flex-row items-center"
             >
-              <View className="w-12 h-12 rounded-full bg-[#3299FF] items-center justify-center mr-4">
-                <Feather name={item.icon as any} size={22} color="#fff" />
+              <View className="w-14.25 h-13.25 rounded-[22px] bg-[#3299FF] items-center justify-center mr-4">
+                <Feather name={item.icon as any} size={24} color="#fff" />
               </View>
 
               <Text className="text-[#093030] text-base font-medium">
