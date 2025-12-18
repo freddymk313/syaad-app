@@ -9,11 +9,11 @@ export default function TabsLayout() {
         headerShown: false,
       }}
     >
-      <Tabs.Screen name="home" />
-      <Tabs.Screen name="search" />
-      <Tabs.Screen name="transfert" />
-      <Tabs.Screen name="settings" />
-      <Tabs.Screen name="profile" />
+      <Tabs.Screen name="home" options={{ tabBarLabel: "home" }} />
+      <Tabs.Screen name="search" options={{ tabBarLabel: "search" }} />
+      <Tabs.Screen name="transfert" options={{ tabBarLabel: "transfert" }} />
+      <Tabs.Screen name="settings" options={{ tabBarLabel: "settings" }} />
+      <Tabs.Screen name="profile" options={{ tabBarLabel: "profile" }} />
     </Tabs>
   );
 }

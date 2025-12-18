@@ -134,7 +134,7 @@ export default function ProfileScreen() {
           <Text className="text-xl font-semibold text-[#093030]">
             John Smith
           </Text>
-          <Text className="text-sm text-gray-400 mt-1">ID: 25030024</Text>
+          <Text className="text-sm text-[#093030] mt-1">ID: 25030024</Text>
         </View>
 
         {/* MENU */}

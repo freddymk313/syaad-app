@@ -15,6 +15,14 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
     profile: (props: any) => <Feather name="user" {...props} />,
   };
 
+  const routeKeyMap: Record<string, string> = {
+    home: "home",
+    search: "search",
+    transfert: "transfert",
+    settings: "settings",
+    profile: "profile", // même si la route devient profile/index
+  };
+
   const { colors } = useTheme();
   const { buildHref } = useLinkBuilder();
 
@@ -64,6 +72,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
 
           const key = (route.name ?? "").toLowerCase();
           const Icon = icons[key];
+
           if (!Icon) {
             console.warn(
               `No icon found for route "${route.name}" (normalized "${key}")`
