@@ -58,7 +58,7 @@ export default function EditProfileScreen() {
       <View
         style={{
           position: "absolute",
-          top: HEADER_HEIGHT - CARD_OVERLAP - (AVATAR_SIZE / 2),
+          top: HEADER_HEIGHT - CARD_OVERLAP - AVATAR_SIZE / 2,
           alignSelf: "center",
           zIndex: 20,
         }}
@@ -72,7 +72,7 @@ export default function EditProfileScreen() {
               borderRadius: AVATAR_SIZE / 2,
             }}
           />
-          <Pressable 
+          <Pressable
             className="absolute bottom-1 right-1 bg-[#0088FF] p-2 rounded-full *border-2 border-white"
             onPress={() => console.log("Change photo")}
           >
@@ -100,11 +100,15 @@ export default function EditProfileScreen() {
       >
         {/* INFOS UTILISATEUR RÉSUMÉES */}
         <View className="items-center mb-8">
-          <Text className="text-xl font-semibold text-[#093030]">John Smith</Text>
+          <Text className="text-xl font-semibold text-[#093030]">
+            John Smith
+          </Text>
           <Text className="text-sm text-gray-400">ID: 25030024</Text>
         </View>
 
-        <Text className="text-[#093030] text-xl font-bold mb-4">Account Settings</Text>
+        <Text className="text-[#093030] text-xl font-bold mb-4">
+          Account Settings
+        </Text>
 
         {/* CHAMPS DE SAISIE */}
         <View className="gap-4 mb-6">
@@ -150,7 +154,9 @@ export default function EditProfileScreen() {
         {/* RÉGLAGES SWITCHES */}
         <View className="mb-8 gap-4">
           <View className="flex-row justify-between items-center">
-            <Text className="text-[#093030] font-semibold">Push Notifications</Text>
+            <Text className="text-[#093030] font-semibold">
+              Push Notifications
+            </Text>
             <Switch
               value={isNotificationsEnabled}
               onValueChange={setIsNotificationsEnabled}
@@ -160,7 +166,9 @@ export default function EditProfileScreen() {
           </View>
 
           <View className="flex-row justify-between items-center">
-            <Text className="text-[#093030] font-semibold">Turn Dark Theme</Text>
+            <Text className="text-[#093030] font-semibold">
+              Turn Dark Theme
+            </Text>
             <Switch
               value={isDarkMode}
               onValueChange={setIsDarkMode}
@@ -172,10 +180,19 @@ export default function EditProfileScreen() {
 
         {/* BOUTON UPDATE */}
         <Pressable
-          className="bg-[#0088FF] py-4 rounded-full items-center justify-center shadow-lg"
+          className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center"
           onPress={() => console.log("Profile Updated")}
         >
-          <Text className="text-white font-bold text-base">Update Profile</Text>
+          <Text
+            // className="text-white"
+            style={{
+              fontFamily: "PoppinsBold",
+              fontSize: 15,
+              color: "#FFFFFF",
+            }}
+          >
+            Update Profile
+          </Text>
         </Pressable>
       </ScrollView>
 
