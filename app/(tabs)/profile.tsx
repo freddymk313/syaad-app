@@ -36,17 +36,17 @@ export default function ProfileScreen() {
         style={{ height: HEADER_HEIGHT }}
       >
         {/* HEADER */}
-        <View className="flex-row items-center justify-between px-6 pt-14">
+        <View className="flex-row items-center justify-between px-6 pt-17">
           <Pressable onPress={() => router.back()}>
-            <Ionicons name="arrow-back" size={24} color="white" />
+            <Feather name="arrow-left" size={24} color="white" />
           </Pressable>
 
           <Text className="text-white text-xl font-semibold">
             Profile
           </Text>
 
-          <Pressable>
-            <Ionicons name="notifications-outline" size={24} color="white" />
+          <Pressable className="bg-[#DFEFF8] p-1 rounded-full">
+            <Ionicons name="notifications-outline" size={20} color="#093030" />
           </Pressable>
         </View>
       </LinearGradient>
