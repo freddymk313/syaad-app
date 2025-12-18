@@ -14,7 +14,7 @@ import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const { height } = Dimensions.get("window");
-const HEADER_HEIGHT = height * 0.3;
+const HEADER_HEIGHT = height * 0.23;
 const AVATAR_SIZE = 120;
 
 export default function ProfileScreen() {
@@ -36,7 +36,7 @@ export default function ProfileScreen() {
         style={{ height: HEADER_HEIGHT }}
       >
         {/* HEADER */}
-        <View className="flex-row items-center justify-between px-6 pt-17">
+        <View className="flex-row items-center justify-between px-6 pt-15 ios:pt-20">
           <Pressable onPress={() => router.back()}>
             <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
