@@ -31,7 +31,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
         backgroundColor: "transparent",
       }}
     >
-      <View className="flex-row w-full h-27 px-4 bg-[#DFEFF8] rounded-[70px]">
+      <View className="flex-row w-full h-27 px-6 bg-[#DFEFF8] rounded-t-[70px]">
         {state.routes.map((route: any, index: number) => {
           const { options } = descriptors[route.key];
           const label =
@@ -72,6 +72,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
           return (
             <PlatformPressable
               href={buildHref(route.name, route.params)}
+              android_ripple={{ color: "transparent" }}
               key={route.key}
               accessibilityState={isFocused ? { selected: true } : {}}
               accessibilityLabel={options.tabBarAccessibilityLabel}
@@ -134,6 +135,7 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
   },
 });
 
