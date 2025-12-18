@@ -32,7 +32,9 @@ export default function ProfileScreen() {
     <View style={{ flex: 1, position: "relative" }}>
       <LinearGradient
         colors={["#0088FF", "#005299"]}
-        locations={[0, 1]}
+        locations={[0.01, 0.45]} // 1% pour #0088FF, 45% pour #005299
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
         style={{ height: HEADER_HEIGHT }}
       >
         {/* HEADER */}
