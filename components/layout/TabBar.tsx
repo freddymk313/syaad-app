@@ -75,7 +75,12 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
               justifyContent: "center",
             }}
           >
-            <View style={[styles.iconWrapper, isFocused && { backgroundColor: primaryColor }]}>
+            <View
+              style={[
+                styles.iconWrapper,
+                isFocused && { backgroundColor: primaryColor },
+              ]}
+            >
               {Icon?.({ size: 24, color: isFocused ? "#FFFFFF" : grayColor })}
             </View>
           </PlatformPressable>
