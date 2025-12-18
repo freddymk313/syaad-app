@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function settings() {
   return (
-    <View>
+    <View className='flex-1 items-center justify-center h-full bg-[#FFFFFF]'>
       <Text>settings</Text>
     </View>
   )

@@ -22,70 +22,80 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
   const grayColor = "#052224";
 
   return (
-    <View className="flex-row w-full h-27 px-4 bg-[#DFEFF8] rounded-[70px]">
-      {state.routes.map((route: any, index: number) => {
-        const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
+    <View
+      style={{
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: "transparent",
+      }}
+    >
+      <View className="flex-row w-full h-27 px-4 bg-[#DFEFF8] rounded-[70px]">
+        {state.routes.map((route: any, index: number) => {
+          const { options } = descriptors[route.key];
+          const label =
+            options.tabBarLabel !== undefined
+              ? options.tabBarLabel
+              : options.title !== undefined
+              ? options.title
+              : route.name;
 
-        const isFocused = state.index === index;
+          const isFocused = state.index === index;
 
-        const onPress = () => {
-          const event = navigation.emit({
-            type: "tabPress",
-            target: route.key,
-            canPreventDefault: true,
-          });
+          const onPress = () => {
+            const event = navigation.emit({
+              type: "tabPress",
+              target: route.key,
+              canPreventDefault: true,
+            });
 
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name, route.params);
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name, route.params);
+            }
+          };
+
+          const onLongPress = () => {
+            navigation.emit({
+              type: "tabLongPress",
+              target: route.key,
+            });
+          };
+
+          const key = (route.name ?? "").toLowerCase();
+          const Icon = icons[key];
+          if (!Icon) {
+            console.warn(
+              `No icon found for route "${route.name}" (normalized "${key}")`
+            );
           }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: "tabLongPress",
-            target: route.key,
-          });
-        };
-
-        const key = (route.name ?? "").toLowerCase();
-        const Icon = icons[key];
-        if (!Icon) {
-          console.warn(
-            `No icon found for route "${route.name}" (normalized "${key}")`
-          );
-        }
-        return (
-          <PlatformPressable
-            href={buildHref(route.name, route.params)}
-            key={route.key}
-            accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarButtonTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={{
-              flex: 1,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <View
-              style={[
-                styles.iconWrapper,
-                isFocused && { backgroundColor: primaryColor },
-              ]}
+          return (
+            <PlatformPressable
+              href={buildHref(route.name, route.params)}
+              key={route.key}
+              accessibilityState={isFocused ? { selected: true } : {}}
+              accessibilityLabel={options.tabBarAccessibilityLabel}
+              testID={options.tabBarButtonTestID}
+              onPress={onPress}
+              onLongPress={onLongPress}
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             >
-              {Icon?.({ size: 24, color: isFocused ? "#FFFFFF" : grayColor })}
-            </View>
-          </PlatformPressable>
-        );
-      })}
+              <View
+                style={[
+                  styles.iconWrapper,
+                  isFocused && { backgroundColor: primaryColor },
+                ]}
+              >
+                {Icon?.({ size: 24, color: isFocused ? "#FFFFFF" : grayColor })}
+              </View>
+            </PlatformPressable>
+          );
+        })}
+      </View>
     </View>
   );
 };
