@@ -14,8 +14,9 @@ import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const { height } = Dimensions.get("window");
-const HEADER_HEIGHT = height * 0.23;
-const AVATAR_SIZE = 120;
+const HEADER_HEIGHT = height * 0.28;
+const AVATAR_SIZE = 117;
+const CARD_OVERLAP = 60;
 
 export default function ProfileScreen() {
   const router = useRouter();
@@ -53,10 +54,15 @@ export default function ProfileScreen() {
 
       <View
         style={{
+          // position: "absolute",
+          // top: HEADER_HEIGHT - AVATAR_SIZE / 2,
+          // alignSelf: "center",
+          // zIndex: 10,
           position: "absolute",
-          top: HEADER_HEIGHT - AVATAR_SIZE / 2,
+          top: HEADER_HEIGHT - CARD_OVERLAP - (AVATAR_SIZE / 2),
           alignSelf: "center",
-          zIndex: 10,
+          zIndex: 20, // Toujours au-dessus de tout
+          elevation: 5,
         }}
       >
         <Image
@@ -76,12 +82,21 @@ export default function ProfileScreen() {
         showsVerticalScrollIndicator={false}
         // className="flex-1 bg-white rounded-t-[60px] -mt-16 px-6 pt-20"
         style={{
+          // flex: 1,
+          // backgroundColor: "white",
+          // borderTopLeftRadius: 60,
+          // borderTopRightRadius: 60,
+          // // marginTop: -40,
+          // paddingTop: AVATAR_SIZE / 2 + 20, // 👈 place les infos sous l’avatar
+          // paddingHorizontal: 24,
+
           flex: 1,
           backgroundColor: "white",
           borderTopLeftRadius: 60,
           borderTopRightRadius: 60,
-          // marginTop: -40,
-          paddingTop: AVATAR_SIZE / 2 + 20, // 👈 place les infos sous l’avatar
+          paddingTop: AVATAR_SIZE / 2 + 20,
+          marginTop: -CARD_OVERLAP, // Fait remonter la carte sur le bleu
+          zIndex: 10,
           paddingHorizontal: 24,
         }}
       >
