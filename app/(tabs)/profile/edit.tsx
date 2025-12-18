@@ -14,6 +14,7 @@ import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
 import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import InputField from "@/components/form/InputField";
 
 const { height } = Dimensions.get("window");
 const HEADER_HEIGHT = height * 0.28;
@@ -69,16 +70,13 @@ export default function EditProfileScreen() {
               width: AVATAR_SIZE,
               height: AVATAR_SIZE,
               borderRadius: AVATAR_SIZE / 2,
-              borderWidth: 4,
-              borderColor: "white",
             }}
           />
-          {/* Bouton Caméra superposé */}
           <Pressable 
-            className="absolute bottom-1 right-1 bg-[#0088FF] p-2 rounded-full border-2 border-white"
+            className="absolute bottom-1 right-1 bg-[#0088FF] p-2 rounded-full *border-2 border-white"
             onPress={() => console.log("Change photo")}
           >
-            <Feather name="camera" size={16} color="white" />
+            <Feather name="camera" size={14} color="white" />
           </Pressable>
         </View>
       </View>
@@ -106,7 +104,7 @@ export default function EditProfileScreen() {
           <Text className="text-sm text-gray-400">ID: 25030024</Text>
         </View>
 
-        <Text className="text-[#093030] text-lg font-bold mb-4">Account Settings</Text>
+        <Text className="text-[#093030] text-xl font-bold mb-4">Account Settings</Text>
 
         {/* CHAMPS DE SAISIE */}
         <View className="gap-4 mb-6">
@@ -130,13 +128,22 @@ export default function EditProfileScreen() {
           </View>
 
           <View>
-            <Text className="text-gray-500 mb-2 ml-1">Email Address</Text>
+            <Text className="text-[#093030] mb-2 ml-1">Email Address</Text>
             <TextInput
               value={email}
               onChangeText={setEmail}
               keyboardType="email-address"
               className="bg-[#F2F8FF] px-5 py-4 rounded-2xl text-[#093030] font-medium"
             />
+
+            {/* <Text className="text-[#093030] mb-2 mt-3.5">Email Address</Text>
+              <InputField
+                // Icon={undefined}
+                placeholder="********"
+                value={email}
+                onChangeText={setEmail}
+                secureTextEntry
+              /> */}
           </View>
         </View>
 

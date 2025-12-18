@@ -54,10 +54,6 @@ export default function ProfileScreen() {
 
       <View
         style={{
-          // position: "absolute",
-          // top: HEADER_HEIGHT - AVATAR_SIZE / 2,
-          // alignSelf: "center",
-          // zIndex: 10,
           position: "absolute",
           top: HEADER_HEIGHT - CARD_OVERLAP - (AVATAR_SIZE / 2),
           alignSelf: "center",
