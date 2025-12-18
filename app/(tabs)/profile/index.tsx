@@ -22,7 +22,7 @@ export default function ProfileScreen() {
   const router = useRouter();
 
   const menuItems = [
-    { label: "Edit Profile", icon: "user", onPress: () => {} },
+    { label: "Edit Profile", icon: "user", onPress: () => { router.push("/profile/edit"); } },
     { label: "Security", icon: "shield", onPress: () => {} },
     { label: "Setting", icon: "settings", onPress: () => {} },
     { label: "Help", icon: "help-circle", onPress: () => {} },
