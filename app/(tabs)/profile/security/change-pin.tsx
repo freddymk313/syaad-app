@@ -139,10 +139,19 @@ export default function ChangePinScreen() {
         {/* BOUTON D'ACTION */}
         <View className="mt-10">
           <Pressable
-            className="bg-[#0088FF] py-4 rounded-full items-center justify-center shadow-lg"
-            onPress={() => console.log("PIN Changed")}
+            className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center"
+            onPress={() => console.log("Profile Updated")}
           >
-            <Text className="text-white font-bold text-lg">Change Pin</Text>
+            <Text
+              // className="text-white"
+              style={{
+                fontFamily: "PoppinsSemiBold",
+                fontSize: 15,
+                color: "#FFFFFF",
+              }}
+            >
+              Change Pin
+            </Text>
           </Pressable>
         </View>
       </ScrollView>
