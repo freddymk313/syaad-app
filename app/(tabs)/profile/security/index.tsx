@@ -20,7 +20,7 @@ const CARD_OVERLAP = 60;
 const SecurityItem = ({ label, onPress } : any) => (
   <Pressable
     onPress={onPress}
-    className="flex-row items-center justify-between py-6 border-b border-gray-100"
+    className="flex-row items-center justify-between py-6 border-b border-[#DFF7E2]"
   >
     <Text className="text-[#093030] text-lg font-medium">{label}</Text>
     <Feather name="chevron-right" size={24} color="#093030" />
