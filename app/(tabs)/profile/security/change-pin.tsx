@@ -77,20 +77,17 @@ export default function ChangePinScreen() {
 
     // 2. Une fois terminé, on affiche l'écran de succès
     setIsSuccess(true);
-  };
 
-  // Si le succès est déclenché, on affiche l'écran de succès en plein écran
-  if (isSuccess) {
-    return (
-      <SuccessScreen 
-        title="Pin Has Been Changed Successfully" 
-        onFinished={() => {
-          setIsSuccess(false); // On remet l'état à faux
-          router.back();       // Et on revient en arrière (ou vers le profil)
-        }} 
-      />
-    );
-  }
+    console.log("Pin Updated");
+
+    router.push({
+      pathname: "/(flow)/success",
+      params: {
+        title: "Pin Has Been Changed Successfully",
+        backTo: "/(tabs)/profile/security",
+      },
+    });
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
