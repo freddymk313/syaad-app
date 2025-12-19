@@ -67,7 +67,15 @@ export default function NewPasswordScreen({
     
     // Navigation vers l'écran de succès (3.2 - C - Password Changed Succesfully)
     // J'ai inclus l'écran de succès dans les fichiers joints, il est logique de naviguer vers lui.
-    router.navigate("/(auth)/password-changed-success"); 
+    // router.navigate("/(auth)/password-changed-success"); 
+
+    router.push({
+      pathname: "/(flow)/success",
+      params: {
+        title: "Password Has Been Changed Successfully",
+        backTo: "/(auth)/login",
+      },
+    });
   };
 
   const handleSignUpPress = () => {
