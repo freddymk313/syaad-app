@@ -23,7 +23,7 @@ export default function ProfileScreen() {
 
   const menuItems = [
     { label: "Edit Profile", icon: "user", onPress: () => { router.push("/profile/edit"); } },
-    { label: "Security", icon: "shield", onPress: () => {} },
+    { label: "Security", icon: "shield", onPress: () => { router.push("/profile/security"); } },
     { label: "Setting", icon: "settings", onPress: () => {} },
     { label: "Help", icon: "help-circle", onPress: () => {} },
     { label: "Logout", icon: "log-out", onPress: () => {} },
