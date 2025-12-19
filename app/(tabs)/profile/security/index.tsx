@@ -77,11 +77,11 @@ export default function SecurityScreen() {
         <View>
           <SecurityItem 
             label="Change Pin" 
-            onPress={() => router.push("/profile/security/change-pin")} 
+            onPress={() => router.navigate("/profile/security/change-pin")} 
           />
           <SecurityItem 
             label="Fingerprint" 
-            onPress={() => router.push("/profile/security/fingerprint")} 
+            onPress={() => router.navigate("/profile/security/fingerprint")} 
           />
           <SecurityItem 
             label="Terms And Conditions" 
