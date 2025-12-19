@@ -15,7 +15,7 @@ const ICON_SIZE = width * 0.3;
 export default function SuccessScreen({
   title,
   onFinished,
-  duration = 3000,
+  duration = 2000,
 }: SuccessScreenProps) {
   useEffect(() => {
     if (onFinished) {
