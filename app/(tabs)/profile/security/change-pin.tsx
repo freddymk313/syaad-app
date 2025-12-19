@@ -12,6 +12,7 @@ import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
 import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import SuccessScreen from "@/components/SuccessScreen";
 
 const { height } = Dimensions.get("window");
 const HEADER_HEIGHT = height * 0.25;
@@ -28,6 +29,7 @@ export default function ChangePinScreen() {
   const [showCurrent, setShowCurrent] = useState(false);
   const [showNew, setShowNew] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   // Composant interne pour les champs de saisie PIN
   const PinInputField = ({
@@ -68,6 +70,27 @@ export default function ChangePinScreen() {
       </View>
     </View>
   );
+
+  const handleChangePin = () => {
+    // 1. Ici, tu places ta logique (appel API, etc.)
+    console.log("Pin Updated");
+
+    // 2. Une fois terminé, on affiche l'écran de succès
+    setIsSuccess(true);
+  };
+
+  // Si le succès est déclenché, on affiche l'écran de succès en plein écran
+  if (isSuccess) {
+    return (
+      <SuccessScreen 
+        title="Pin Has Been Changed Successfully" 
+        onFinished={() => {
+          setIsSuccess(false); // On remet l'état à faux
+          router.back();       // Et on revient en arrière (ou vers le profil)
+        }} 
+      />
+    );
+  }
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -140,7 +163,7 @@ export default function ChangePinScreen() {
         <View className="mt-10">
           <Pressable
             className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center"
-            onPress={() => console.log("Profile Updated")}
+            onPress={handleChangePin}
           >
             <Text
               // className="text-white"
