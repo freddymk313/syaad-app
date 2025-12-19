@@ -47,7 +47,7 @@ export default function ChangePinScreen() {
       <Text className="text-[#093030] text-base font-semibold mb-2 ml-1">
         {label}
       </Text>
-      <View className="flex-row items-center bg-[#F2F8FF] rounded-2xl px-5 py-4">
+      <View className="flex-row items-center bg-[#DFEFF8] rounded-2xl px-5 py-4">
         <TextInput
           value={value}
           onChangeText={onChange}
@@ -56,7 +56,7 @@ export default function ChangePinScreen() {
           placeholderTextColor="#A0A0A0"
           keyboardType="numeric"
           maxLength={4}
-          className="flex-1 text-[#093030] font-medium text-lg"
+          className="flex-1 text-[#093030] font-medium text-lg placeholder:text-sm"
         />
         <Pressable onPress={toggleVisible}>
           <Feather
