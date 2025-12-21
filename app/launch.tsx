@@ -9,7 +9,7 @@ export default function LaunchScreen() {
       <View className="items-center mb-10">
         <Image
           source={require("@/assets/app/icon-blue.png")}
-          className="mb-4"
+          className="mb-3 w-32.5 h-43.5"
           resizeMode="cover"
         />
       </View>
