@@ -28,7 +28,7 @@ type SecurityFingerprintScreenProps = NativeStackScreenProps<
 >;
 
 const { height, width } = Dimensions.get("window");
-const HEADER_HEIGHT = height * 0.28;
+const HEADER_HEIGHT = height * 0.25;
 const FINGERPRINT_ICON_SIZE = width * 0.4; // Taille pour l'icône centrale
 
 // ---------------- COMPONENT ----------------
