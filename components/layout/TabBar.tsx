@@ -5,6 +5,7 @@ import { PlatformPressable } from "@react-navigation/elements";
 import { useLinkBuilder, useTheme } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+// import HomeIcon from "@/assets/icons/home.svg";
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
   const icons: Record<string, (props: any) => React.ReactElement | null> = {
