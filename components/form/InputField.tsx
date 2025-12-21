@@ -18,7 +18,7 @@ const InputField: React.FC<InputFieldProps> = ({
   keyboardType = 'default',
   secureTextEntry = false
 }) => (
-  <View className="flex-row items-center bg-[#DFEFF8] rounded-3xl px-4 py-2.5 mb-4">
+  <View className="flex-row items-center bg-[#DFEFF8] rounded-3xl px-4 py-2 ios:py-4 mb-4">
     <Icon width={20} height={20} color="#6B7280" className="mr-3" />
     <TextInput
       className="flex-1 text-base text-gray-800"
