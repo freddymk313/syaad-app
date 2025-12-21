@@ -5,21 +5,21 @@ import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import {
-    Dimensions,
-    KeyboardAvoidingView,
-    Platform,
-    Pressable,
-    ScrollView,
-    Text,
-    TouchableOpacity,
-    View
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import {
-    CalendarIcon,
-    DevicePhoneMobileIcon,
-    EnvelopeIcon,
-    LockClosedIcon,
-    UserIcon,
+  CalendarIcon,
+  DevicePhoneMobileIcon,
+  EnvelopeIcon,
+  LockClosedIcon,
+  UserIcon,
 } from "react-native-heroicons/outline"; // Nouvelles icônes pour les champs
 
 // --- Définition des Types (à adapter si vous utilisez une navigation différente) ---
@@ -31,7 +31,7 @@ type RegisterScreenProps = NativeStackScreenProps<RootStackParamList, "SignUp">;
 
 const { height } = Dimensions.get("window");
 // Réutilisation de la même hauteur d'en-tête que pour l'écran de Login
-const HEADER_HEIGHT = height * 0.28;
+const HEADER_HEIGHT = height * 0.25;
 
 export default function RegisterScreen({ navigation }: RegisterScreenProps) {
   const router = useRouter();
@@ -55,9 +55,9 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
   };
 
   return (
-    <KeyboardAvoidingView
+    <View
       className="flex-1"
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      // behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <LinearGradient
         colors={["#0088FF", "#005299"]}
@@ -83,105 +83,130 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
           </View>
 
           {/* Card */}
-          <ScrollView
-            // className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
-            // style={{ marginTop: -20, minHeight: height - HEADER_HEIGHT + 20, paddingBottom: 40 }}
-            // showsVerticalScrollIndicator={false}
-            className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
-            // style={{ marginTop: -20 }}
-            contentContainerStyle={{ paddingBottom: 40 }} // pour que le bas soit visible
-            // showsVerticalScrollIndicator={false}
-            keyboardShouldPersistTaps="handled"
-            keyboardDismissMode="on-drag"
-            // contentContainerStyle={{ paddingBottom: 80 }}
-            showsVerticalScrollIndicator={false}
+          <KeyboardAvoidingView
+            style={{ flex: 1 }}
+            behavior={Platform.OS === "ios" ? "padding" : undefined}
           >
-            {/* Champs de Saisie */}
-            <View className="mb-8 mt-6">
-              <Text className="text-[#093030] mb-2">Full Name</Text>
-              <InputField
-                Icon={UserIcon}
-                placeholder="Jean Dupont"
-                value={fullName}
-                onChangeText={setFullName}
-              />
+            <ScrollView
+              // className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
+              // style={{ marginTop: -20, minHeight: height - HEADER_HEIGHT + 20, paddingBottom: 40 }}
+              // showsVerticalScrollIndicator={false}
+              // className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
+              // // style={{ marginTop: -20 }}
+              // contentContainerStyle={{ paddingBottom: 40 }} // pour que le bas soit visible
+              // // showsVerticalScrollIndicator={false}
+              // keyboardShouldPersistTaps="handled"
+              // keyboardDismissMode="on-drag"
+              // // contentContainerStyle={{ paddingBottom: 80 }}
+              // showsVerticalScrollIndicator={false}
 
-              <Text className="text-[#093030] mb-2 mt-3.5">Email</Text>
-              <InputField
-                Icon={EnvelopeIcon}
-                placeholder="example@example.com"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-              />
+              //            className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
+              // contentContainerStyle={{ paddingBottom: 40 }}
+              // keyboardShouldPersistTaps="handled"
+              // keyboardDismissMode="on-drag"
+              // showsVerticalScrollIndicator={false}
 
-              <Text className="text-[#093030] mb-2 mt-3.5">Mobile Number</Text>
-              <InputField
-                Icon={DevicePhoneMobileIcon}
-                placeholder="+243 910 000 345"
-                value={mobileNumber}
-                onChangeText={setMobileNumber}
-                keyboardType="phone-pad"
-              />
-
-              <Text className="text-[#093030] mb-2 mt-3.5">
-                Username Or Date of Birth
-              </Text>
-              <InputField
-                Icon={CalendarIcon} // Ou une icône User si c'est pour un nom d'utilisateur
-                placeholder="dd/mm/yyyy"
-                value={usernameOrDob}
-                onChangeText={setUsernameOrDob}
-              />
-
-              <Text className="text-[#093030] mb-2 mt-3.5">Password</Text>
-              <InputField
-                Icon={LockClosedIcon}
-                placeholder="********"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-              />
-
-              <Text className="text-[#093030] mb-2 mt-3.5">
-                Confirm Password
-              </Text>
-              <InputField
-                Icon={LockClosedIcon}
-                placeholder="********"
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
-                secureTextEntry
-              />
-            </View>
-
-            {/* Bouton Sign Up */}
-            <Pressable
-              className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center mb-4"
-              onPress={handleRegister}
+              className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 shadow-2xl"
+              contentContainerStyle={{
+                paddingBottom: 80,
+                flexGrow: 1,
+              }}
+              keyboardShouldPersistTaps="handled"
+              showsVerticalScrollIndicator={false}
             >
-              <Text
-                // className="text-white"
-                style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#FFFFFF" }}
-              >
-                Sign Up
-              </Text>
-            </Pressable>
+              {/* Champs de Saisie */}
+              <View className="mb-8 mt-6">
+                <Text className="text-[#093030] mb-2">Full Name</Text>
+                <InputField
+                  Icon={UserIcon}
+                  placeholder="Jean Dupont"
+                  value={fullName}
+                  onChangeText={setFullName}
+                />
 
-            {/* Lien Already have an account? Log In */}
-            <View className="flex-row justify-center mt-2 mb-2">
-              <Text className="text-gray-500">Already have an account?</Text>
-              <TouchableOpacity onPress={handleLoginPress}>
-                <Text className="text-[#0088FF] font-semibold ml-1">
-                  Log In
+                <Text className="text-[#093030] mb-2 mt-3.5">Email</Text>
+                <InputField
+                  Icon={EnvelopeIcon}
+                  placeholder="example@example.com"
+                  value={email}
+                  onChangeText={setEmail}
+                  keyboardType="email-address"
+                />
+
+                <Text className="text-[#093030] mb-2 mt-3.5">
+                  Mobile Number
                 </Text>
-              </TouchableOpacity>
-            </View>
-          </ScrollView>
+                <InputField
+                  Icon={DevicePhoneMobileIcon}
+                  placeholder="+243 910 000 345"
+                  value={mobileNumber}
+                  onChangeText={setMobileNumber}
+                  keyboardType="phone-pad"
+                />
+
+                <Text className="text-[#093030] mb-2 mt-3.5">
+                  Username Or Date of Birth
+                </Text>
+                <InputField
+                  Icon={CalendarIcon} // Ou une icône User si c'est pour un nom d'utilisateur
+                  placeholder="dd/mm/yyyy"
+                  value={usernameOrDob}
+                  onChangeText={setUsernameOrDob}
+                />
+
+                <Text className="text-[#093030] mb-2 mt-3.5">Password</Text>
+                <InputField
+                  Icon={LockClosedIcon}
+                  placeholder="********"
+                  value={password}
+                  onChangeText={setPassword}
+                  secureTextEntry
+                />
+
+                <Text className="text-[#093030] mb-2 mt-3.5">
+                  Confirm Password
+                </Text>
+                <InputField
+                  Icon={LockClosedIcon}
+                  placeholder="********"
+                  value={confirmPassword}
+                  onChangeText={setConfirmPassword}
+                  secureTextEntry
+                />
+              </View>
+
+              {/* Bouton Sign Up */}
+              <Pressable
+                className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center mb-4"
+                onPress={handleRegister}
+              >
+                <Text
+                  // className="text-white"
+                  style={{
+                    fontFamily: "PoppinsBold",
+                    fontSize: 15,
+                    color: "#FFFFFF",
+                  }}
+                >
+                  Sign Up
+                </Text>
+              </Pressable>
+
+              {/* Lien Already have an account? Log In */}
+              <View className="flex-row justify-center mt-2 mb-2">
+                <Text className="text-gray-500">Already have an account?</Text>
+                <TouchableOpacity onPress={handleLoginPress}>
+                  <Text className="text-[#0088FF] font-semibold ml-1">
+                    Log In
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
+          </KeyboardAvoidingView>
         </View>
       </LinearGradient>
 
       <StatusBar style="light" />
-    </KeyboardAvoidingView>
+    </View>
   );
 }
