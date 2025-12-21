@@ -12,7 +12,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="home" options={{ tabBarLabel: "home" }} />
       <Tabs.Screen name="search" options={{ tabBarLabel: "search" }} />
       <Tabs.Screen name="transfert" options={{ tabBarLabel: "transfert" }} />
-      <Tabs.Screen name="settings" options={{ tabBarLabel: "settings" }} />
+      <Tabs.Screen name="category" options={{ tabBarLabel: "category" }} />
       <Tabs.Screen name="profile" options={{ tabBarLabel: "profile" }} />
     </Tabs>
   );

@@ -5,24 +5,15 @@ import { PlatformPressable } from "@react-navigation/elements";
 import { useLinkBuilder, useTheme } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import HomeIcon from "@/assets/icons/home.svg";
-import AccountIcon from "@/assets/icons/account.svg";
-import CategoryIcon from "@/assets/icons/category.svg";
-import TransactionIcon from "@/assets/icons/transaction.svg";
-import SearchIcon from "@/assets/icons/search.svg";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
   const icons: Record<string, (props: any) => React.ReactElement | null> = {
     home: (props: any) => <Feather name="home" {...props} />,
     search: (props: any) => <Feather name="search" {...props} />,
-    transfert: (props: any) => <FontAwesome5 name="exchange-alt" {...props} />,
-    settings: (props: any) => <Ionicons name="settings-sharp" {...props} />,
+    transfert: (props: any) => <MaterialIcons name="swap-horiz" {...props} />,
+    category: (props: any) => <MaterialIcons name="bookmark-stacks" {...props} />,
     profile: (props: any) => <Feather name="user" {...props} />,
-    // home: (props: any) => <HomeIcon width={props.size} height={props.size} fill={props.color} />,
-    // search: (props: any) => <SearchIcon width={props.size} height={props.size} fill={props.color} />,
-    // transfert: (props: any) => <TransactionIcon width={props.size} height={props.size} fill={props.color} />,
-    // settings: (props: any) => <CategoryIcon width={props.size} height={props.size} fill={props.color} />,
-    // profile: (props: any) => <AccountIcon width={props.size} height={props.size} fill={props.color} />,
   };
 
   const routeKeyMap: Record<string, string> = {
@@ -110,7 +101,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
                   isFocused && { backgroundColor: primaryColor },
                 ]}
               >
-                {Icon?.({ size: 24, color: isFocused ? "#FFFFFF" : grayColor })}
+                {Icon?.({ size: 25, color: isFocused ? "#FFFFFF" : grayColor })}
               </View>
             </PlatformPressable>
           );
