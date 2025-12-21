@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import Svg, { Circle, Rect } from "react-native-svg";
+import Svg, { Circle, Rect, Path } from "react-native-svg";
 import HomeIcon from "@/assets/icons/home.svg";
 import AccountIcon from "@/assets/icons/account.svg";
 
@@ -9,7 +9,7 @@ export default function settings() {
     <View className="flex-1 items-center justify-center h-full bg-[#FFFFFF]">
       <Text>settings</Text>
 
-      <Svg height="50%" width="50%" viewBox="0 0 100 100" >
+      <Svg height="50%" width="50%" viewBox="0 0 100 100">
         <Circle
           cx="50"
           cy="50"
@@ -27,10 +27,18 @@ export default function settings() {
           strokeWidth="2"
           fill="yellow"
         />
+        <Path d="M12 2L2 7v10l10 5 10-5V7z" fill="black" />
       </Svg>
 
-      <HomeIcon width={24} height={24} fill="#FFFFFF" />
-      <AccountIcon width={24} height={24} fill="#FFFFFF" />
+      <HomeIcon width={54} height={54} 
+      fill="#FFE600" 
+      stroke="#FFE600" />
+
+      <AccountIcon width={24} height={24} fill="#FF0000" />
+
+       <Svg viewBox="0 0 24 24" width={24} height={24}>
+         <AccountIcon width={24} height={24} fill="#FF0000" />
+       </Svg>
     </View>
   );
 }
