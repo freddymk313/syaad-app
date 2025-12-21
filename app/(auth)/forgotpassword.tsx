@@ -48,7 +48,7 @@ interface InputFieldProps {
 }
 
 const { height } = Dimensions.get("window");
-const HEADER_HEIGHT = height * 0.28; // Hauteur de la zone dégradée
+const HEADER_HEIGHT = height * 0.25; // Hauteur de la zone dégradée
 
 export default function ForgotPasswordScreen({
   navigation,
@@ -171,7 +171,7 @@ export default function ForgotPasswordScreen({
 
                 {/* Lien Sign Up / Don't have an account? */}
                 <Pressable
-                  className="bg-[#F2F2F7] py-4 w-[60%] self-center rounded-full items-center justify-center *border border-[#0088FF]"
+                  className="bg-[#DFEFF8] py-4 w-[60%] self-center rounded-full items-center justify-center *border border-[#0088FF]"
                   onPress={handleSignUpPress}
                 >
                   <Text
