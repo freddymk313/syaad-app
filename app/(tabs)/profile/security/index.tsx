@@ -85,7 +85,7 @@ export default function SecurityScreen() {
           />
           <SecurityItem 
             label="Terms And Conditions" 
-            onPress={() => console.log("Terms pressed")} 
+            onPress={() => router.navigate("/profile/security/terms-conditions")} 
           />
         </View>
       </ScrollView>
