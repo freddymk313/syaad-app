@@ -8,20 +8,27 @@ import { StyleSheet, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
-  const icons: Record<string, (props: any) => React.ReactElement | null> = {
-    home: (props: any) => <Feather name="home" {...props} />,
-    search: (props: any) => <Feather name="search" {...props} />,
-    transfert: (props: any) => <MaterialIcons name="swap-horiz" {...props} />,
-    category: (props: any) => <MaterialIcons name="bookmark-stacks" {...props} />,
-    profile: (props: any) => <Feather name="user" {...props} />,
-  };
-
-  const routeKeyMap: Record<string, string> = {
-    home: "home",
-    search: "search",
-    transfert: "transfert",
-    settings: "settings",
-    profile: "profile", // même si la route devient profile/index
+  const icons: Record<
+    string,
+    { render: (props: any) => React.ReactElement; size: number }
+  > = {
+    home: { render: (props) => <Feather name="home" {...props} />, size: 25 },
+    search: {
+      render: (props) => <Feather name="search" {...props} />,
+      size: 25,
+    },
+    transfert: {
+      render: (props) => <MaterialIcons name="swap-horiz" {...props} />,
+      size: 31,
+    },
+    category: {
+      render: (props) => <MaterialIcons name="bookmark-stacks" {...props} />,
+      size: 25,
+    },
+    profile: {
+      render: (props) => <Feather name="user" {...props} />,
+      size: 25,
+    },
   };
 
   const { colors } = useTheme();
@@ -43,13 +50,6 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
       <View className="flex-row w-full h-27 px-6 bg-[#DFEFF8] rounded-t-[70px]">
         {state.routes.map((route: any, index: number) => {
           const { options } = descriptors[route.key];
-          const label =
-            options.tabBarLabel !== undefined
-              ? options.tabBarLabel
-              : options.title !== undefined
-              ? options.title
-              : route.name;
-
           const isFocused = state.index === index;
 
           const onPress = () => {
@@ -58,7 +58,6 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
               target: route.key,
               canPreventDefault: true,
             });
-
             if (!isFocused && !event.defaultPrevented) {
               navigation.navigate(route.name, route.params);
             }
@@ -72,13 +71,15 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
           };
 
           const key = (route.name ?? "").toLowerCase();
-          const Icon = icons[key];
+          const IconObj = icons[key];
 
-          if (!Icon) {
-            console.warn(
-              `No icon found for route "${route.name}" (normalized "${key}")`
-            );
+          if (!IconObj) {
+            console.warn(`No icon found for route "${route.name}" (normalized "${key}")`);
+            return null;
           }
+
+          const { render: Icon, size } = IconObj;
+
           return (
             <PlatformPressable
               href={buildHref(route.name, route.params)}
@@ -101,7 +102,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
                   isFocused && { backgroundColor: primaryColor },
                 ]}
               >
-                {Icon?.({ size: 25, color: isFocused ? "#FFFFFF" : grayColor })}
+                {Icon({ size, color: isFocused ? "#FFFFFF" : grayColor })}
               </View>
             </PlatformPressable>
           );
@@ -126,7 +127,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    // paddingVertical: 4,
   },
   label: {
     fontSize: 12,
@@ -140,8 +140,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   iconWrapper: {
-    width: 54,
-    height: 51,
+    width: 57,
+    height: 53,
     borderRadius: 22,
     alignItems: "center",
     justifyContent: "center",

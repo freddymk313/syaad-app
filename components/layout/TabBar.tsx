@@ -1,56 +1,61 @@
-import Feather from "@expo/vector-icons/Feather";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { PlatformPressable } from "@react-navigation/elements";
-import { useLinkBuilder, useTheme } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { PlatformPressable } from "@react-navigation/elements";
+import { useTheme } from "@react-navigation/native";
+
+import HomeIcon from "@/assets/icons/home.svg";
+import SearchIcon from "@/assets/icons/search.svg";
+import TransferIcon from "@/assets/icons/transaction.svg";
+import CategoryIcon from "@/assets/icons/category.svg";
+import ProfileIcon from "@/assets/icons/account.svg";
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
+  const primaryColor = "#1880F1"; 
+  const inactiveColor = "#052224"; 
+  const tabBgColor = "#DFEFF8"; 
+
   const icons: Record<
     string,
     { render: (props: any) => React.ReactElement; size: number }
   > = {
-    home: { render: (props) => <Feather name="home" {...props} />, size: 25 },
+    home: {
+      render: (props) => (
+        <HomeIcon width={props.size} height={props.size} stroke={props.color} fill="none" strokeWidth={2} />
+      ),
+      size: 24,
+    },
     search: {
-      render: (props) => <Feather name="search" {...props} />,
-      size: 25,
+      render: (props) => (
+        <SearchIcon width={props.size} height={props.size} stroke={props.color} fill="none" strokeWidth={2} />
+      ),
+      size: 24,
     },
     transfert: {
-      render: (props) => <MaterialIcons name="swap-horiz" {...props} />,
-      size: 31,
+      render: (props) => (
+        <TransferIcon width={props.size} height={props.size} stroke={props.color} fill="none" strokeWidth={1.5} />
+      ),
+      size: 28,
     },
     category: {
-      render: (props) => <MaterialIcons name="bookmark-stacks" {...props} />,
-      size: 25,
+      render: (props) => (
+        <CategoryIcon width={props.size} height={props.size} stroke={props.color} fill="none" strokeWidth={2} />
+      ),
+      size: 24,
     },
     profile: {
-      render: (props) => <Feather name="user" {...props} />,
-      size: 25,
+      render: (props) => (
+        <ProfileIcon width={props.size} height={props.size} stroke={props.color} fill="none" strokeWidth={2} />
+      ),
+      size: 24,
     },
   };
 
-  const { colors } = useTheme();
-  const { buildHref } = useLinkBuilder();
-
-  const primaryColor = colors?.primary ?? "#0088FF";
-  const grayColor = "#052224";
-
   return (
-    <View
-      style={{
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: "transparent",
-      }}
-    >
-      <View className="flex-row w-full h-27 px-6 bg-[#DFEFF8] rounded-t-[70px]">
+    <View style={styles.tabBarContainer}>
+      <View style={[styles.mainWrapper, { backgroundColor: tabBgColor }]}>
         {state.routes.map((route: any, index: number) => {
-          const { options } = descriptors[route.key];
           const isFocused = state.index === index;
+          const { options } = descriptors[route.key];
 
           const onPress = () => {
             const event = navigation.emit({
@@ -63,38 +68,20 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
             }
           };
 
-          const onLongPress = () => {
-            navigation.emit({
-              type: "tabLongPress",
-              target: route.key,
-            });
-          };
-
           const key = (route.name ?? "").toLowerCase();
           const IconObj = icons[key];
-
-          if (!IconObj) {
-            console.warn(`No icon found for route "${route.name}" (normalized "${key}")`);
-            return null;
-          }
+          if (!IconObj) return null;
 
           const { render: Icon, size } = IconObj;
 
+          // On détermine la couleur ici : Blanc si focus, Inactif sinon
+          const activeColor = isFocused ? "#FFFFFF" : inactiveColor;
+
           return (
             <PlatformPressable
-              href={buildHref(route.name, route.params)}
-              android_ripple={{ color: "transparent" }}
               key={route.key}
-              accessibilityState={isFocused ? { selected: true } : {}}
-              accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarButtonTestID}
               onPress={onPress}
-              onLongPress={onLongPress}
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+              style={styles.tabItem}
             >
               <View
                 style={[
@@ -102,7 +89,8 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
                   isFocused && { backgroundColor: primaryColor },
                 ]}
               >
-                {Icon({ size, color: isFocused ? "#FFFFFF" : grayColor })}
+                {/* On passe la couleur calculée au composant Icon */}
+                <Icon size={size} color={activeColor} />
               </View>
             </PlatformPressable>
           );
@@ -113,39 +101,34 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  tabBarContainer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "transparent",
+  },
+  mainWrapper: {
     flexDirection: "row",
     width: "100%",
-    height: 54,
-    backgroundColor: "#DFEFF8",
-    borderRadius: 70,
+    height: 95, 
+    paddingHorizontal: 20,
+    borderTopLeftRadius: 60,
+    borderTopRightRadius: 60,
     alignItems: "center",
-    justifyContent: "space-around",
-    paddingHorizontal: 8,
+    justifyContent: "space-between",
   },
   tabItem: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
-  label: {
-    fontSize: 12,
-    marginTop: 4,
-  },
-  tabBar: {
-    flexDirection: "row",
-    height: 60,
-    borderTopWidth: 1,
-    borderTopColor: "#e0e0e0",
-    backgroundColor: "#ffffff",
-  },
   iconWrapper: {
-    width: 57,
-    height: 53,
+    width: 60,
+    height: 55,
     borderRadius: 22,
     alignItems: "center",
     justifyContent: "center",
-    overflow: "hidden",
   },
 });
 
