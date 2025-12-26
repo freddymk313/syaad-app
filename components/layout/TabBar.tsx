@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { PlatformPressable } from "@react-navigation/elements";
-import { useTheme } from "@react-navigation/native";
 
 import HomeIcon from "@/assets/icons/home.svg";
 import SearchIcon from "@/assets/icons/search.svg";
@@ -19,33 +18,24 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
     { render: (props: any) => React.ReactElement; size: number }
   > = {
     home: {
-      render: (props) => (
-        <HomeIcon width={props.size} height={props.size} stroke={props.color} fill="none" strokeWidth={2} />
-      ),
+      // On passe la couleur à "color" pour que "currentColor" dans le SVG fonctionne
+      render: (props) => <HomeIcon width={props.size} height={props.size} color={props.color} fill="none" />,
       size: 24,
     },
     search: {
-      render: (props) => (
-        <SearchIcon width={props.size} height={props.size} stroke={props.color} fill="none" strokeWidth={2} />
-      ),
+      render: (props) => <SearchIcon width={props.size} height={props.size} color={props.color} fill="none" />,
       size: 24,
     },
     transfert: {
-      render: (props) => (
-        <TransferIcon width={props.size} height={props.size} stroke={props.color} fill="none" strokeWidth={1.5} />
-      ),
+      render: (props) => <TransferIcon width={props.size} height={props.size} color={props.color} fill="none" />,
       size: 28,
     },
     category: {
-      render: (props) => (
-        <CategoryIcon width={props.size} height={props.size} stroke={props.color} fill="none" strokeWidth={2} />
-      ),
+      render: (props) => <CategoryIcon width={props.size} height={props.size} color={props.color} fill="none" />,
       size: 24,
     },
     profile: {
-      render: (props) => (
-        <ProfileIcon width={props.size} height={props.size} stroke={props.color} fill="none" strokeWidth={2} />
-      ),
+      render: (props) => <ProfileIcon width={props.size} height={props.size} color={props.color} fill="none" />,
       size: 24,
     },
   };
@@ -73,15 +63,14 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
           if (!IconObj) return null;
 
           const { render: Icon, size } = IconObj;
-
-          // On détermine la couleur ici : Blanc si focus, Inactif sinon
           const activeColor = isFocused ? "#FFFFFF" : inactiveColor;
 
           return (
             <PlatformPressable
               key={route.key}
-              onPress={onPress}
+              onPress={onPress} // Décommenté pour activer la navigation
               style={styles.tabItem}
+              android_ripple={{ color: 'transparent' }}
             >
               <View
                 style={[
@@ -89,7 +78,6 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
                   isFocused && { backgroundColor: primaryColor },
                 ]}
               >
-                {/* On passe la couleur calculée au composant Icon */}
                 <Icon size={size} color={activeColor} />
               </View>
             </PlatformPressable>
