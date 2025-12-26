@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Pressable,
-  Dimensions,
-  ScrollView,
-} from "react-native";
+import { View, Text, Pressable, Dimensions, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
@@ -41,7 +35,9 @@ export default function FingerprintDetailScreen() {
             <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
 
-          <Text className="text-white text-xl font-bold">{fingerprintName}</Text>
+          <Text className="text-white text-xl font-bold">
+            {fingerprintName}
+          </Text>
 
           <Pressable className="bg-[#DFEFF8] p-1.5 rounded-full">
             <Ionicons name="notifications-outline" size={20} color="#093030" />
@@ -63,7 +59,7 @@ export default function FingerprintDetailScreen() {
         }}
         contentContainerStyle={{
           alignItems: "center",
-          paddingTop: 60,
+          paddingTop: 100,
           paddingHorizontal: 28,
         }}
       >
@@ -73,18 +69,33 @@ export default function FingerprintDetailScreen() {
         </View>
 
         {/* AFFICHAGE DU NOM (Style Input désactivé) */}
-        <View className="w-full bg-[#DFEFF8] py-4 rounded-2xl items-center mb-12">
-          <Text className="text-[#093030] text-lg font-semibold">
+        <View className="w-full bg-[#DFEFF8] py-2.5 rounded-full items-center mb-18">
+          <Text
+            style={{
+              fontFamily: "PoppinsBold",
+              fontSize: 15,
+              color: "#0E3E3E",
+            }}
+          >
             {fingerprintName}
           </Text>
         </View>
 
         {/* BOUTON DELETE */}
-        <Pressable 
+        <Pressable
           onPress={() => console.log("Delete pressed")}
-          className="w-full bg-[#0088FF] py-4 rounded-full items-center shadow-md active:opacity-80"
+          // className="w-full bg-[#0088FF] py-4 rounded-full items-center shadow-md active:opacity-80"
+          className="bg-[#0088FF] py-4 w-[60%] rounded-full items-center justify-center mb-8"
         >
-          <Text className="text-white text-lg font-bold">Delete</Text>
+          <Text
+            style={{
+              fontFamily: "PoppinsBold",
+              fontSize: 15,
+              color: "#FFFFFF",
+            }}
+          >
+            Delete
+          </Text>
         </Pressable>
       </ScrollView>
     </View>
