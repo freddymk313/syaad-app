@@ -63,7 +63,7 @@ export default function AddFingerprintScreen() {
       {/* 2. CARTE BLANCHE SUPERPOSÉE */}
       <ScrollView
         showsVerticalScrollIndicator={false}
-        scrollEnabled={Platform.OS === 'ios'}
+        scrollEnabled={Platform.OS === "ios"}
         style={{
           flex: 1,
           backgroundColor: "white",
@@ -80,13 +80,21 @@ export default function AddFingerprintScreen() {
         }}
       >
         {/* GRANDE ICÔNE D'EMPREINTE (Centrée) */}
-        <View 
+        <View
+          //   style={{
+          //     width: FINGERPRINT_ICON_SIZE,
+          //     height: FINGERPRINT_ICON_SIZE,
+          //     borderRadius: FINGERPRINT_ICON_SIZE / 2,
+          //   }}
           style={{
             width: FINGERPRINT_ICON_SIZE,
             height: FINGERPRINT_ICON_SIZE,
             borderRadius: FINGERPRINT_ICON_SIZE / 2,
+            backgroundColor: "#3299FF", // Couleur de fond du cercle
+            alignItems: "center",
+            justifyContent: "center",
           }}
-          className="bg-[#3299FF] items-center justify-center shadow-lg mb-10"
+          className="mb-10"
         >
           <FingerPrintIcon size={FINGERPRINT_ICON_SIZE * 0.6} color="white" />
         </View>
@@ -95,9 +103,10 @@ export default function AddFingerprintScreen() {
         <Text className="text-[#093030] text-2xl font-bold text-center mb-4">
           Use Fingerprint To Access
         </Text>
-        
+
         <Text className="text-gray-500 text-center text-base leading-6 mb-12 px-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt.
         </Text>
 
         {/* BOUTON "Use Touch Id" (Couleur bleu clair selon Figma) */}
