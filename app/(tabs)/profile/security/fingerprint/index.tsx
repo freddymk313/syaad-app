@@ -23,7 +23,7 @@ interface FingerprintItemProps {
 }
 
 const { height } = Dimensions.get("window");
-const HEADER_HEIGHT = height * 0.25;
+const HEADER_HEIGHT = height * 0.23;
 const CARD_OVERLAP = 60;
 
 // --- COMPOSANT ENFANT TYPÉ ---
