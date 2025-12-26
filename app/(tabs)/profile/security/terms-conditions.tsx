@@ -66,12 +66,12 @@ export default function TermsConditionsScreen() {
           }}
         >
           {/* TITRE PRINCIPAL */}
-          <Text className="text-[#093030] text-xl font-bold mb-4">
+          <Text className="text-[#000000] text-lg font-bold mb-4">
             Est Fugiat Assumenda Aut Reprehenderit
           </Text>
 
           {/* CORPS DU TEXTE (SIMULATION DU CONTENU FIGMA) */}
-          <Text className="text-gray-500 text-sm leading-6 mb-4 text-justify">
+          <Text className="text-[#000000]/60 text-sm leading-6 mb-4 text-justify">
             Lorem ipsum dolor sit amet. Et odio officia aut voluptate internos est omnis vitae ut architecto sunt non tenetur fuga ut provident vero. Quo aspernatur facere et consectetur ipsum et facere corrupti est asperiores facere. Est fugiat assumenda aut reprehenderit voluptatem sed.
           </Text>
 
@@ -83,27 +83,27 @@ export default function TermsConditionsScreen() {
               "Aut ipsum Quis qui porro quasi aut minus placeat!",
               "Sit consequatur neque ab vitae facere.",
             ].map((item, index) => (
-              <Text key={index} className="text-gray-500 text-sm leading-6 mb-1">
+              <Text key={index} className="text-[#000000]/60 text-sm leading-6 mb-1">
                 {index + 1}. {item}
               </Text>
             ))}
           </View>
 
-          <Text className="text-gray-500 text-sm leading-6 mb-4 text-justify">
+          <Text className="text-[#000000]/60 text-sm leading-6 mb-4 text-justify">
             Aut quidem accusantium nam alias autem eum officiis placeat et omnis autem id officiis perspiciatis qui corrupti officia eum aliquam provident. Eum voluptas error et optio dolorum cum molestiae nobis et odit molestiae quo magnam impedit sed fugiat nihil non voluptas qui neque repellat.
           </Text>
 
           {/* LISTE À PUCES */}
           <View className="mb-6 pl-2">
-            <Text className="text-gray-500 text-sm leading-6">• Aut fuga sequi eum voluptatibus provident.</Text>
-            <Text className="text-gray-500 text-sm leading-6">• Eos consequuntur voluptas vel amet eaque aut dignissimos velit.</Text>
+            <Text className="text-[#000000]/60 text-sm leading-6">• Aut fuga sequi eum voluptatibus provident.</Text>
+            <Text className="text-[#000000]/60 text-sm leading-6">• Eos consequuntur voluptas vel amet eaque aut dignissimos velit.</Text>
           </View>
 
           {/* LIEN EXTERNE */}
-          <View className="mb-8">
-            <Text className="text-gray-500 text-sm">Read the terms and conditions in more detail at</Text>
+          <View className="mb-4">
+            <Text className="text-[#000000]/60 text-sm">Read the terms and conditions in more detail at</Text>
             <Pressable>
-              <Text className="text-[#0088FF] text-sm font-bold underline">www.finwiseapp.de</Text>
+              <Text className="text-[#3299FF] text-sm font-bold underline">www.finwiseapp.de</Text>
             </Pressable>
           </View>
 
@@ -115,7 +115,7 @@ export default function TermsConditionsScreen() {
             <View className={`w-6 h-6 rounded border-2 items-center justify-center mr-3 ${accepted ? 'bg-[#0088FF] border-[#0088FF]' : 'border-gray-300'}`}>
               {accepted && <Ionicons name="checkmark" size={16} color="white" />}
             </View>
-            <Text className="text-[#093030] text-sm font-semibold">
+            <Text className="text-[#093030] text-sm *font-semibold">
               I accept all the terms and conditions
             </Text>
           </Pressable>
