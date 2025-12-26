@@ -34,11 +34,11 @@ const FingerprintItem: React.FC<FingerprintItemProps> = ({
 }) => (
   <Pressable
     onPress={onPress}
-    className="flex-row items-center justify-between py-6 border-b border-gray-100"
+    className="flex-row items-center justify-between py-5"
   >
     <View className="flex-row items-center">
       {/* Cercle d'icône bleu */}
-      <View className="w-13 h-13 rounded-full bg-[#3299FF] items-center justify-center mr-4">
+      <View className="w-14.25 h-13.5 rounded-[22px] bg-[#3299FF] items-center justify-center mr-4">
         {isAdd ? (
           <Feather name="plus" size={26} color="white" />
         ) : (
@@ -71,7 +71,7 @@ export default function FingerprintScreen() {
         end={{ x: 1, y: 1 }}
         style={{ height: HEADER_HEIGHT }}
       >
-        <View className="flex-row items-center justify-between px-6 pt-12">
+        <View className="flex-row items-center justify-between px-6 pt-15 ios:pt-20">
           <Pressable onPress={() => router.back()} className="p-1">
             <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
@@ -101,9 +101,9 @@ export default function FingerprintScreen() {
           paddingBottom: 40,
         }}
       >
-        <Text className="text-[#093030] text-2xl font-bold mb-6">
+        {/* <Text className="text-[#093030] text-2xl font-bold mb-6">
           Fingerprint
-        </Text>
+        </Text> */}
 
         <View>
           <FingerprintItem 
