@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Pressable,
-  ScrollView,
-  Dimensions,
-} from "react-native";
+import { View, Text, Pressable, ScrollView, Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
@@ -38,7 +32,9 @@ export default function TermsConditionsScreen() {
             <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
 
-          <Text className="text-white text-xl font-bold">Terms And Conditions</Text>
+          <Text className="text-white text-xl font-bold">
+            Terms And Conditions
+          </Text>
 
           <Pressable className="bg-[#DFEFF8] p-1.5 rounded-full">
             <Ionicons name="notifications-outline" size={20} color="#093030" />
@@ -72,7 +68,11 @@ export default function TermsConditionsScreen() {
 
           {/* CORPS DU TEXTE (SIMULATION DU CONTENU FIGMA) */}
           <Text className="text-[#000000]/60 text-sm leading-6 mb-4 text-justify">
-            Lorem ipsum dolor sit amet. Et odio officia aut voluptate internos est omnis vitae ut architecto sunt non tenetur fuga ut provident vero. Quo aspernatur facere et consectetur ipsum et facere corrupti est asperiores facere. Est fugiat assumenda aut reprehenderit voluptatem sed.
+            Lorem ipsum dolor sit amet. Et odio officia aut voluptate internos
+            est omnis vitae ut architecto sunt non tenetur fuga ut provident
+            vero. Quo aspernatur facere et consectetur ipsum et facere corrupti
+            est asperiores facere. Est fugiat assumenda aut reprehenderit
+            voluptatem sed.
           </Text>
 
           {/* LISTE NUMÉROTÉE */}
@@ -83,37 +83,58 @@ export default function TermsConditionsScreen() {
               "Aut ipsum Quis qui porro quasi aut minus placeat!",
               "Sit consequatur neque ab vitae facere.",
             ].map((item, index) => (
-              <Text key={index} className="text-[#000000]/60 text-sm leading-6 mb-1">
+              <Text
+                key={index}
+                className="text-[#000000]/60 text-sm leading-6 mb-1"
+              >
                 {index + 1}. {item}
               </Text>
             ))}
           </View>
 
           <Text className="text-[#000000]/60 text-sm leading-6 mb-4 text-justify">
-            Aut quidem accusantium nam alias autem eum officiis placeat et omnis autem id officiis perspiciatis qui corrupti officia eum aliquam provident. Eum voluptas error et optio dolorum cum molestiae nobis et odit molestiae quo magnam impedit sed fugiat nihil non voluptas qui neque repellat.
+            Aut quidem accusantium nam alias autem eum officiis placeat et omnis
+            autem id officiis perspiciatis qui corrupti officia eum aliquam
+            provident. Eum voluptas error et optio dolorum cum molestiae nobis
+            et odit molestiae quo magnam impedit sed fugiat nihil non voluptas
+            qui neque repellat.
           </Text>
 
           {/* LISTE À PUCES */}
           <View className="mb-6 pl-2">
-            <Text className="text-[#000000]/60 text-sm leading-6">• Aut fuga sequi eum voluptatibus provident.</Text>
-            <Text className="text-[#000000]/60 text-sm leading-6">• Eos consequuntur voluptas vel amet eaque aut dignissimos velit.</Text>
+            <Text className="text-[#000000]/60 text-sm leading-6">
+              • Aut fuga sequi eum voluptatibus provident.
+            </Text>
+            <Text className="text-[#000000]/60 text-sm leading-6">
+              • Eos consequuntur voluptas vel amet eaque aut dignissimos velit.
+            </Text>
           </View>
 
           {/* LIEN EXTERNE */}
-          <View className="mb-4">
-            <Text className="text-[#000000]/60 text-sm">Read the terms and conditions in more detail at</Text>
+          <View className="mb-6">
+            <Text className="text-[#000000]/60 text-sm">
+              Read the terms and conditions in more detail at
+            </Text>
             <Pressable>
-              <Text className="text-[#3299FF] text-sm font-bold underline">www.finwiseapp.de</Text>
+              <Text className="text-[#3299FF] text-sm font-bold underline">
+                www.finwiseapp.de
+              </Text>
             </Pressable>
           </View>
 
           {/* CHECKBOX D'ACCEPTATION */}
-          <Pressable 
+          <Pressable
             onPress={() => setAccepted(!accepted)}
             className="flex-row items-center mb-8"
           >
-            <View className={`w-6 h-6 rounded border-2 items-center justify-center mr-3 ${accepted ? 'bg-[#0088FF] border-[#0088FF]' : 'border-gray-300'}`}>
-              {accepted && <Ionicons name="checkmark" size={16} color="white" />}
+            <View
+              className={`w-6 h-6 rounded border-2 items-center justify-center mr-3 ${
+                accepted ? "bg-[#0088FF] border-[#0088FF]" : "border-gray-300"
+              }`}
+            >
+              {accepted && (
+                <Ionicons name="checkmark" size={16} color="white" />
+              )}
             </View>
             <Text className="text-[#093030] text-sm *font-semibold">
               I accept all the terms and conditions
@@ -124,9 +145,18 @@ export default function TermsConditionsScreen() {
           <Pressable
             disabled={!accepted}
             onPress={() => router.back()}
-            className={`py-4 rounded-full items-center shadow-md ${accepted ? 'bg-[#0088FF]' : 'bg-gray-300'}`}
+            // className={`py-4 rounded-full items-center shadow-md ${accepted ? 'bg-[#0088FF]' : 'bg-gray-300'}`}
+            className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center"
           >
-            <Text className="text-white text-lg font-bold">Accept</Text>
+            <Text
+              style={{
+                fontFamily: "PoppinsBold",
+                fontSize: 15,
+                color: "#FFFFFF",
+              }}
+            >
+              Accept
+            </Text>
           </Pressable>
         </ScrollView>
       </View>
