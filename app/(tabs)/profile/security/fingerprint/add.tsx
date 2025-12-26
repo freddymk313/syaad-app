@@ -74,7 +74,7 @@ export default function AddFingerprintScreen() {
         }}
         contentContainerStyle={{
           alignItems: "center",
-          paddingTop: 60,
+          paddingTop: 85,
           paddingHorizontal: 28,
           paddingBottom: 40,
         }}
@@ -93,8 +93,9 @@ export default function AddFingerprintScreen() {
             backgroundColor: "#3299FF", // Couleur de fond du cercle
             alignItems: "center",
             justifyContent: "center",
+            marginBottom: 35,
           }}
-          className="mb-10"
+        //   className="mb-10"
         >
           <FingerPrintIcon size={FINGERPRINT_ICON_SIZE * 0.6} color="white" />
         </View>
