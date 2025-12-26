@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Pressable, Dimensions, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
@@ -14,9 +14,28 @@ const CARD_OVERLAP = 60;
 
 export default function FingerprintDetailScreen() {
   const router = useRouter();
+    const [isSuccess, setIsSuccess] = useState(false);
 
   // Pour correspondre au texte de la maquette Figma "Jhon Fingerprint"
   const fingerprintName = "Jhon Fingerprint";
+
+  const handleChangePin = () => {
+    // 1. Ici, tu places ta logique (appel API, etc.)
+    console.log("Pin Updated");
+
+    // 2. Une fois terminé, on affiche l'écran de succès
+    setIsSuccess(true);
+
+    console.log("Pin Updated");
+
+    router.push({
+      pathname: "/(flow)/success",
+      params: {
+        title: "The fingerprint has been successfully deleted",
+        backTo: "/(tabs)/profile/security",
+      },
+    });
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -83,7 +102,7 @@ export default function FingerprintDetailScreen() {
 
         {/* BOUTON DELETE */}
         <Pressable
-          onPress={() => console.log("Delete pressed")}
+          onPress={() => handleChangePin()}
           // className="w-full bg-[#0088FF] py-4 rounded-full items-center shadow-md active:opacity-80"
           className="bg-[#0088FF] py-4 w-[60%] rounded-full items-center justify-center mb-8"
         >
