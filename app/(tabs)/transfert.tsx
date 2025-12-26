@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function transfert() {
   return (
-    <View>
-      <Text>transfert</Text>
-    </View>
+    <View className="flex-1 items-center justify-center h-full bg-[#FFFFFF]">
+          <Text>transfert</Text>
+        </View>
   )
 }

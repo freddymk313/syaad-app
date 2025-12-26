@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function search() {
   return (
-    <View>
-      <Text>search</Text>
-    </View>
+    <View className="flex-1 items-center justify-center h-full bg-[#FFFFFF]">
+          <Text>search</Text>
+        </View>
   )
 }
