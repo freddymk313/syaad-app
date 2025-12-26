@@ -108,7 +108,7 @@ export default function FingerprintScreen() {
         <View>
           <FingerprintItem 
             label="John Fingerprint" 
-            onPress={() => console.log("Edit Fingerprint")} 
+            onPress={() => router.push("/profile/security/fingerprint/detail" as any)} 
           />
           
           <FingerprintItem 
