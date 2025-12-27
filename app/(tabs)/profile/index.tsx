@@ -178,7 +178,7 @@ export default function ProfileScreen() {
         <View
           style={{
             flex: 1,
-            backgroundColor: "rgba(0,0,0,0.6)",
+            backgroundColor: "rgba(30, 30, 30, 0.5)",
             justifyContent: "center",
             alignItems: "center",
             padding: 24,
