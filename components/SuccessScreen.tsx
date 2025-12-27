@@ -27,7 +27,7 @@ export default function SuccessScreen({
   }, [onFinished, duration]);
 
   return (
-    <View className="flex-1 bg-[#3299FF]">
+    <View className="flex-1 bg-[#3299FF]* bg-[#0088FF]">
       <StatusBar style="light" />
 
       <View className="flex-1 items-center justify-center p-8">
