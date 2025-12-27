@@ -67,7 +67,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
 
           return (
             <PlatformPressable
-              key={route.key}
+              key={route.key} 
               onPress={onPress} // Décommenté pour activer la navigation
               style={styles.tabItem}
               android_ripple={{ color: 'transparent' }}
@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
   },
 });
 
