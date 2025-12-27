@@ -6,7 +6,7 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
@@ -20,13 +20,14 @@ const CARD_OVERLAP = 60;
 
 export default function ProfileScreen() {
   const router = useRouter();
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const menuItems = [
     { label: "Edit Profile", icon: "user", onPress: () => { router.push("/profile/edit"); } },
     { label: "Security", icon: "shield", onPress: () => { router.push("/profile/security"); } },
     { label: "Setting", icon: "settings", onPress: () => {} },
     { label: "Help", icon: "help-circle", onPress: () => {} },
-    { label: "Logout", icon: "log-out", onPress: () => {} },
+    { label: "Logout", icon: "log-out", onPress: () => setModalVisible(true) },
   ];
 
   return (
