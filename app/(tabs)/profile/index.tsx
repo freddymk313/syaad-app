@@ -33,7 +33,7 @@ export default function ProfileScreen() {
     <View style={{ flex: 1, position: "relative" }}>
       <LinearGradient
         colors={["#0088FF", "#005299"]}
-        locations={[0.01, 0.45]} // 1% pour #0088FF, 45% pour #005299
+        locations={[0, 0.74]} // 1% pour #0088FF, 45% pour #005299
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ height: HEADER_HEIGHT }}
@@ -141,7 +141,7 @@ export default function ProfileScreen() {
               onPress={item.onPress}
               className="flex-row items-center"
             >
-              <View className="w-14.25 h-13.25 rounded-[22px] bg-[#3299FF] items-center justify-center mr-4">
+              <View className="w-14.25 h-13.5 rounded-[22px] bg-[#3299FF] items-center justify-center mr-4">
                 <Feather name={item.icon as any} size={24} color="#fff" />
               </View>
 
