@@ -66,13 +66,13 @@ export default function FingerprintScreen() {
       {/* 1. HEADER GRADIENT */}
       <LinearGradient
         colors={["#0088FF", "#005299"]}
-        locations={[0.01, 0.45]}
+        locations={[0, 0.64]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ height: HEADER_HEIGHT }}
       >
         <View className="flex-row items-center justify-between px-6 pt-15 ios:pt-20">
-          <Pressable onPress={() => router.back()} className="p-1">
+          <Pressable onPress={() => router.navigate("/(tabs)/profile/security")} className="p-1">
             <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
 
