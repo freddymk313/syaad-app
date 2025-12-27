@@ -187,7 +187,7 @@ export default function ProfileScreen() {
           {/* Conteneur Blanc */}
           <View
             style={{
-              backgroundColor: "white",
+              backgroundColor: "#FFFFFF",
               borderRadius: 40,
               width: "100%",
               padding: 32,
@@ -198,7 +198,7 @@ export default function ProfileScreen() {
               style={{
                 fontSize: 24,
                 fontWeight: "700",
-                color: "#052224",
+                color: "#1E1E1E",
                 marginBottom: 12,
               }}
             >
@@ -208,7 +208,7 @@ export default function ProfileScreen() {
             <Text
               style={{
                 fontSize: 16,
-                color: "#052224",
+                color: "#363130",
                 textAlign: "center",
                 marginBottom: 32,
               }}
@@ -223,9 +223,9 @@ export default function ProfileScreen() {
                 // Ajoutez votre logique de déconnexion ici (ex: router.replace('/login'))
               }}
               style={{
-                backgroundColor: "#00D094",
+                backgroundColor: "#0088FF",
                 width: "100%",
-                height: 60,
+                height: 50,
                 borderRadius: 30,
                 justifyContent: "center",
                 alignItems: "center",
@@ -233,7 +233,7 @@ export default function ProfileScreen() {
               }}
             >
               <Text
-                style={{ color: "#052224", fontSize: 18, fontWeight: "600" }}
+                style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "600" }}
               >
                 Yes, End Session
               </Text>
@@ -243,16 +243,16 @@ export default function ProfileScreen() {
             <Pressable
               onPress={() => setModalVisible(false)}
               style={{
-                backgroundColor: "#E6F7F1",
+                backgroundColor: "#DFEFF8",
                 width: "100%",
-                height: 60,
+                height: 50,
                 borderRadius: 30,
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
               <Text
-                style={{ color: "#052224", fontSize: 18, fontWeight: "600" }}
+                style={{ color: "#0E3E3E", fontSize: 18, fontWeight: "600" }}
               >
                 Cancel
               </Text>
