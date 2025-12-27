@@ -5,6 +5,7 @@ import {
   Pressable,
   ScrollView,
   Dimensions,
+  Modal,
 } from "react-native";
 import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
@@ -23,8 +24,20 @@ export default function ProfileScreen() {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const menuItems = [
-    { label: "Edit Profile", icon: "user", onPress: () => { router.push("/profile/edit"); } },
-    { label: "Security", icon: "shield", onPress: () => { router.push("/profile/security"); } },
+    {
+      label: "Edit Profile",
+      icon: "user",
+      onPress: () => {
+        router.push("/profile/edit");
+      },
+    },
+    {
+      label: "Security",
+      icon: "shield",
+      onPress: () => {
+        router.push("/profile/security");
+      },
+    },
     { label: "Setting", icon: "settings", onPress: () => {} },
     { label: "Help", icon: "help-circle", onPress: () => {} },
     { label: "Logout", icon: "log-out", onPress: () => setModalVisible(true) },
@@ -56,7 +69,7 @@ export default function ProfileScreen() {
       <View
         style={{
           position: "absolute",
-          top: HEADER_HEIGHT - CARD_OVERLAP - (AVATAR_SIZE / 2),
+          top: HEADER_HEIGHT - CARD_OVERLAP - AVATAR_SIZE / 2,
           alignSelf: "center",
           zIndex: 20, // Toujours au-dessus de tout
           elevation: 5,
@@ -153,6 +166,100 @@ export default function ProfileScreen() {
           ))}
         </View>
       </ScrollView>
+
+      {/* MODAL DE DÉCONNEXION */}
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        {/* Overlay sombre en arrière-plan */}
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(0,0,0,0.6)",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 24,
+          }}
+        >
+          {/* Conteneur Blanc */}
+          <View
+            style={{
+              backgroundColor: "white",
+              borderRadius: 40,
+              width: "100%",
+              padding: 32,
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: "700",
+                color: "#052224",
+                marginBottom: 12,
+              }}
+            >
+              End Session
+            </Text>
+
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#052224",
+                textAlign: "center",
+                marginBottom: 32,
+              }}
+            >
+              Are you sure you want to log out?
+            </Text>
+
+            {/* Bouton "Yes, End Session" */}
+            <Pressable
+              onPress={() => {
+                setModalVisible(false);
+                // Ajoutez votre logique de déconnexion ici (ex: router.replace('/login'))
+              }}
+              style={{
+                backgroundColor: "#00D094",
+                width: "100%",
+                height: 60,
+                borderRadius: 30,
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 16,
+              }}
+            >
+              <Text
+                style={{ color: "#052224", fontSize: 18, fontWeight: "600" }}
+              >
+                Yes, End Session
+              </Text>
+            </Pressable>
+
+            {/* Bouton "Cancel" */}
+            <Pressable
+              onPress={() => setModalVisible(false)}
+              style={{
+                backgroundColor: "#E6F7F1",
+                width: "100%",
+                height: 60,
+                borderRadius: 30,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text
+                style={{ color: "#052224", fontSize: 18, fontWeight: "600" }}
+              >
+                Cancel
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
 
       <StatusBar style="light" />
     </View>
