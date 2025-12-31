@@ -249,9 +249,9 @@ const TransactionItem = ({
       <Text className="text-[#052224] font-bold text-[16px] leading-5">
         {title}
       </Text>
-      <Text className="text-[0068FF] text-[11px]">{subtitle}</Text>
+      <Text className="text-[#0068FF] text-[11px]">{subtitle}</Text>
     </View>
-    <Text className="text-gray-400 text-xs mr-4 font-medium">{category}</Text>
+    <Text className="text-[#052224] text-xs mr-4 font-medium">{category}</Text>
     <Text
       className={`font-bold text-base ${
         isPositive ? "text-[#093030]" : "text-[#0088FF]"
