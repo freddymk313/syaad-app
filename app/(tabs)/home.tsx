@@ -34,7 +34,7 @@ export default function HomeScreen() {
       {/* 1. HEADER GRADIENT AVEC STATISTIQUES */}
       <LinearGradient
         colors={["#0088FF", "#005299"]}
-        locations={[0, 0.74]} // 1% pour #0088FF, 45% pour #005299
+        locations={[0.1, 1]} // 1% pour #0088FF, 45% pour #005299
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ height: HEADER_HEIGHT }}
@@ -123,6 +123,7 @@ export default function HomeScreen() {
           borderTopRightRadius: 60,
           marginTop: -CARD_OVERLAP,
           zIndex: 10,
+          overflow: "hidden",
         }}
       >
         <ScrollView
@@ -135,10 +136,10 @@ export default function HomeScreen() {
         >
           {/* Summary Box (Bleue avec l'icône voiture) */}
           <View className="bg-[#0088FF] rounded-[33px] p-5 flex-row items-center mb-8">
-            <View className="bg-white/20 p-4 rounded-full border border-white/20">
+            <View className="p-4 rounded-full border border-white/30">
               <TruckIcon size={32} color="white" />
             </View>
-            <View className="flex-1 ml-5 border-l border-white/20 pl-5">
+            <View className="flex-1 ml-5 border-l border-white/30 pl-5">
               <View className="mb-4">
                 <View className="flex-row items-center mb-1">
                   <Ionicons
@@ -152,7 +153,7 @@ export default function HomeScreen() {
                 </View>
                 <Text className="text-white text-lg font-bold">$4,000.00</Text>
               </View>
-              <View>
+              <View className="border-t border-white/30 pt-5 mr-8">
                 <View className="flex-row items-center mb-1">
                   <Ionicons
                     name="restaurant-outline"
