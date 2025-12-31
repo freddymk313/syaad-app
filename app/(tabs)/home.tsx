@@ -49,23 +49,27 @@ export default function HomeScreen() {
               >
                 Hi, Welcome Back
               </Text>
-              <Text className="text-blue-100 text-sm">Good Morning</Text>
+              <Text 
+              // className="text-blue-100 text-sm"
+              style={{ fontFamily: "PoppinsRegular", fontSize: 14, color: "#FFFFFF" }}
+              >Good Morning</Text>
             </View>
-            <Pressable className="bg-white/20 p-2.5 rounded-full border border-white/30">
-              <Ionicons name="notifications-outline" size={22} color="white" />
-            </Pressable>
+            <Pressable className="bg-[#DFEFF8] p-1 rounded-full">
+            <Ionicons name="notifications-outline" size={20} color="#093030" />
+          </Pressable>
           </View>
 
           {/* Balance & Expense Row */}
-          <View className="flex-row justify-between items-end mb-8">
-            <View>
+          <View className="flex-row justify-between items-end mb-8 mx-8">
+            <View className="border-r border-white/65 pr-7.5">
               <View className="flex-row items-center mb-1">
                 <Ionicons
                   name="wallet-outline"
-                  size={14}
-                  color="rgba(255,255,255,0.7)"
+                  size={17}
+                  // color="rgba(255,255,255,0.7)"
+                  color="white"
                 />
-                <Text className="text-white/70 text-xs ml-1 font-semibold uppercase">
+                <Text className="text-white/70 text-sm ml-1 font-semibold uppercase">
                   Total Balance
                 </Text>
               </View>
@@ -75,10 +79,10 @@ export default function HomeScreen() {
               <View className="flex-row items-center mb-1">
                 <Ionicons
                   name="trending-down"
-                  size={14}
-                  color="rgba(255,255,255,0.7)"
+                  size={17.5}
+                  color="white"
                 />
-                <Text className="text-white/70 text-xs ml-1 font-semibold uppercase">
+                <Text className="text-white/70 text-sm ml-1 font-semibold uppercase">
                   Total Expense
                 </Text>
               </View>
@@ -87,14 +91,14 @@ export default function HomeScreen() {
           </View>
 
           {/* Progress Bar Section */}
-          <View className="w-full">
+          <View className="mx-8">
             <View className="flex-row justify-between items-center mb-2">
               <Text className="text-white font-bold text-xs bg-black/20 px-2 py-0.5 rounded">
                 30%
               </Text>
               <Text className="text-white font-bold text-xs">$20,000.00</Text>
             </View>
-            <View className="h-3 w-full bg-white/20 rounded-full overflow-hidden">
+            <View className="h-5.5 w-full bg-white/80 rounded-full overflow-hidden">
               <View
                 style={{ width: "30%" }}
                 className="h-full bg-white rounded-full"
@@ -102,7 +106,7 @@ export default function HomeScreen() {
             </View>
             <View className="flex-row items-center mt-3">
               <Ionicons name="checkmark-circle" size={16} color="white" />
-              <Text className="text-white/90 text-[11px] ml-2 font-medium">
+              <Text className="text-white/90 text-[14px] ml-2 font-medium">
                 30% Of Your Expenses, Looks Good.
               </Text>
             </View>
@@ -130,7 +134,7 @@ export default function HomeScreen() {
           }}
         >
           {/* Summary Box (Bleue avec l'icône voiture) */}
-          <View className="bg-[#0088FF] rounded-[30px] p-5 flex-row items-center mb-8 shadow-xl shadow-blue-300">
+          {/* <View className="bg-[#0088FF] rounded-[30px] p-5 flex-row items-center mb-8 shadow-xl shadow-blue-300">
             <View className="bg-white/20 p-4 rounded-full border border-white/20">
               <TruckIcon size={32} color="white" />
             </View>
@@ -162,7 +166,7 @@ export default function HomeScreen() {
                 <Text className="text-white text-lg font-bold">-$100.00</Text>
               </View>
             </View>
-          </View>
+          </View> */}
 
           {/* Filter Tabs (Daily, Weekly, Monthly) */}
           <View className="flex-row bg-[#F2F7FB] p-1.5 rounded-2xl mb-8">
