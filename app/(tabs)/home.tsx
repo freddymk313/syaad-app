@@ -134,7 +134,7 @@ export default function HomeScreen() {
           }}
         >
           {/* Summary Box (Bleue avec l'icône voiture) */}
-          {/* <View className="bg-[#0088FF] rounded-[30px] p-5 flex-row items-center mb-8 shadow-xl shadow-blue-300">
+          <View className="bg-[#0088FF] rounded-[33px] p-5 flex-row items-center mb-8">
             <View className="bg-white/20 p-4 rounded-full border border-white/20">
               <TruckIcon size={32} color="white" />
             </View>
@@ -166,10 +166,10 @@ export default function HomeScreen() {
                 <Text className="text-white text-lg font-bold">-$100.00</Text>
               </View>
             </View>
-          </View> */}
+          </View>
 
           {/* Filter Tabs (Daily, Weekly, Monthly) */}
-          <View className="flex-row bg-[#F2F7FB] p-1.5 rounded-2xl mb-8">
+          <View className="flex-row bg-[#DFEFF8] p-2 rounded-[22px] mb-8">
             <TabButton title="Daily" active={false} />
             <TabButton title="Weekly" active={false} />
             <TabButton title="Monthly" active={true} />
@@ -221,12 +221,12 @@ export default function HomeScreen() {
 
 const TabButton = ({ title, active }: { title: string; active: boolean }) => (
   <Pressable
-    className={`flex-1 py-3 rounded-xl items-center ${
+    className={`flex-1 py-4 rounded-[19px] items-center ${
       active ? "bg-[#0088FF]" : ""
     }`}
   >
     <Text
-      className={`font-bold text-sm ${active ? "text-white" : "text-gray-400"}`}
+      className={`text-[15px] ${active ? "text-white" : "text-[#052224]"}`}
     >
       {title}
     </Text>
