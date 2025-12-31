@@ -242,14 +242,14 @@ const TransactionItem = ({
   isPositive,
 }: any) => (
   <View className="flex-row items-center mb-6">
-    <View className="w-12 h-12 bg-[#0088FF] rounded-2xl items-center justify-center mr-4 shadow-sm">
+    <View className="w-[57px] h-[53px] bg-[#0088FF] rounded-[22px] items-center justify-center mr-4 shadow-sm">
       {icon}
     </View>
     <View className="flex-1">
-      <Text className="text-[#093030] font-bold text-base leading-5">
+      <Text className="text-[#052224] font-bold text-[16px] leading-5">
         {title}
       </Text>
-      <Text className="text-gray-400 text-[11px]">{subtitle}</Text>
+      <Text className="text-[0068FF] text-[11px]">{subtitle}</Text>
     </View>
     <Text className="text-gray-400 text-xs mr-4 font-medium">{category}</Text>
     <Text
