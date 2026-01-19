@@ -12,7 +12,7 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import {
   FingerPrintIcon,
@@ -20,6 +20,10 @@ import {
   UserIcon,
 } from "react-native-heroicons/outline";
 import { SvgProps } from "react-native-svg";
+
+import { login } from "@/services/auth.service";
+import { useAuthStore } from "@/store/auth.store";
+import { Alert } from "react-native";
 
 type RootStackParamList = {
   Login: undefined;
@@ -43,9 +47,29 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
   const router = useRouter();
+  const { loginSuccess } = useAuthStore();
 
   const handleSignUpPress = () => {
     router.navigate("/(auth)/register");
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await login({
+        email,
+        password,
+      });
+
+      if (response.success) {
+        await loginSuccess(response.data);
+        router.replace("/(tabs)/home");
+      }
+    } catch (error: any) {
+      Alert.alert(
+        "Erreur de connexion",
+        error?.response?.data?.message || "Identifiants incorrects",
+      );
+    }
   };
 
   return (
@@ -74,7 +98,6 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
               paddingTop: 40,
               alignItems: "center",
               justifyContent: "center",
-              
             }}
           >
             <Text className="text-3xl font-semibold text-[#FFFFFF]">
@@ -87,14 +110,16 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
             // style={{ marginTop: -20, minHeight: height - HEADER_HEIGHT + 20 }}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{
-              // paddingHorizontal: 25,
-              // backgroundColor: "#FFFFFF",
-              // paddingVertical: 32,
-              // paddingBottom: 40,
-              // borderTopStartRadius: 60, 
-              // borderTopEndRadius: 60
-            }}
+            contentContainerStyle={
+              {
+                // paddingHorizontal: 25,
+                // backgroundColor: "#FFFFFF",
+                // paddingVertical: 32,
+                // paddingBottom: 40,
+                // borderTopStartRadius: 60,
+                // borderTopEndRadius: 60
+              }
+            }
           >
             {/* Champs de saisie */}
             <View className="mb-5 mt-6">
@@ -119,19 +144,24 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             {/* Log In */}
             <Pressable
               className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center"
-              onPress={()=> router.navigate('/(tabs)/home')}
+              onPress={() => router.navigate("/(tabs)/home")}
             >
               <Text
                 // className="text-white"
-                style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#FFFFFF" }}
+                style={{
+                  fontFamily: "PoppinsBold",
+                  fontSize: 15,
+                  color: "#FFFFFF",
+                }}
               >
                 Log In
               </Text>
             </Pressable>
 
             {/* Forgot Password */}
-            <TouchableOpacity className="self-center my-6" 
-              onPress={() => router.navigate('/(auth)/forgotpassword')}
+            <TouchableOpacity
+              className="self-center my-6"
+              onPress={() => router.navigate("/(auth)/forgotpassword")}
             >
               <Text className="text-sm text-[#093030] font-semibold">
                 Forgot Password?
@@ -145,15 +175,20 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             >
               <Text
                 // className="text-[#0E3E3E]"
-                style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#0E3E3E" }}
+                style={{
+                  fontFamily: "PoppinsBold",
+                  fontSize: 15,
+                  color: "#0E3E3E",
+                }}
               >
                 Sign Up
               </Text>
             </Pressable>
 
             {/* Fingerprint */}
-            <TouchableOpacity className="flex-row items-center justify-center gap-1 mt-6"
-              onPress={()=> router.navigate('/(auth)/security-fingerprint')}
+            <TouchableOpacity
+              className="flex-row items-center justify-center gap-1 mt-6"
+              onPress={() => router.navigate("/(auth)/security-fingerprint")}
             >
               <FingerPrintIcon width={24} height={24} color="#0088FF" />
               <Text className="text-sm text-gray-600">
