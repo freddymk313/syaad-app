@@ -4,7 +4,7 @@
     "slug": "syaad-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/app/icon-bg.png",
+    "icon": "./assets/app/icon-bg-2.png",
     "scheme": "syaadapp",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
