@@ -36,12 +36,19 @@
         "expo-splash-screen",
         {
           "image": "./assets/app/splash-icon.png",
-          "imageWidth": 100,
+          "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#0088FF"
         }
       ],
-      "expo-font"
+      "expo-font",
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true,
+          "faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
