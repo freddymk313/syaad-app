@@ -1,4 +1,5 @@
 import InputField from "@/components/form/InputField";
+import i18n  from "@/i18n";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
@@ -101,7 +102,8 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             }}
           >
             <Text className="text-3xl font-semibold text-[#FFFFFF]">
-              Welcome
+              {/* Welcome */}
+              {i18n.t("welcome")}
             </Text>
           </View>
 
