@@ -1,18 +1,32 @@
 import { Text, Pressable } from "react-native";
 import React from "react";
 
-export default function NextButton({ onPress }: { onPress: () => void }) {
+// export default function NextButton({ onPress }: { onPress: () => void }) {
+//   return (
+//     <Pressable
+//       onPress={onPress}
+//       className="bg-[#0088FF] py-4 rounded-full items-center justify-center w-full"
+//     >
+//       <Text
+//         // className="text-white"
+//         style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#FFFFFF" }}
+//       >
+//         Next
+//       </Text>
+//     </Pressable>
+//   );
+// }
+
+export default function NextButton({ onPress, title }: { onPress: () => void, title: string }) {
   return (
     <Pressable
       onPress={onPress}
       className="bg-[#0088FF] py-4 rounded-full items-center justify-center w-full"
     >
-      <Text
-        // className="text-white"
-        style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#FFFFFF" }}
-      >
-        Next
+      <Text style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#FFFFFF" }}>
+        {title}
       </Text>
     </Pressable>
   );
 }
+

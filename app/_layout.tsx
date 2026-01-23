@@ -11,6 +11,7 @@ import { useFonts } from "expo-font";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
+// import './i18n';
 
 SplashScreen.preventAutoHideAsync();
 

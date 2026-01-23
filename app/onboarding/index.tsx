@@ -1,16 +1,25 @@
 import { View, FlatList, Animated } from "react-native";
-import slides from "@/constants/slides-onboarding";
+// import slides from "@/constants/slides-onboarding";
 import OnboardingItem from "@/components/onboarding/OnboardingItem";
 import { useRef, useState } from "react";
 import Paginator from "@/components/onboarding/Paginator";
 import NextButton from "@/components/onboarding/NextButton";
 import { useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 export default function OnboardingIndex() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef<FlatList<any>>(null);
   const router = useRouter();
+  const { t } = useTranslation();
+
+  const slides = [
+    { id: "1", title: t("slides.0.title"), image: require("../assets/onbording-img/1.png") },
+    { id: "2", title: t("slides.1.title"), image: require("../assets/onbording-img/2.png") },
+    { id: "3", title: t("slides.2.title"), image: require("../assets/onbording-img/3.png") },
+    { id: "4", title: t("slides.3.title"), image: require("../assets/onbording-img/4.png") },
+  ];
 
   const viewableItemsChanged = useRef(({ viewableItems }: any) => {
     setCurrentIndex(viewableItems[0].index);
