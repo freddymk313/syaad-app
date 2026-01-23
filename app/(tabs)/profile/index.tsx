@@ -8,6 +8,7 @@ import {
   Modal,
   FlatList,
 } from "react-native";
+import i18n from "@/i18n";
 import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
@@ -22,11 +23,12 @@ const CARD_OVERLAP = 60;
 
 export default function ProfileScreen() {
   const router = useRouter();
-  
+
   // États pour les Modals
   const [isLogoutModalVisible, setLogoutModalVisible] = useState(false);
   const [isLanguageModalVisible, setLanguageModalVisible] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("Français");
+  const [_, forceUpdate] = useState(0);
 
   const languages = [
     { id: "fr", label: "Français" },
@@ -47,17 +49,24 @@ export default function ProfileScreen() {
       onPress: () => router.push("/profile/security"),
     },
     { label: "Setting", icon: "settings", onPress: () => {} },
-    { 
-      label: "Language", 
-      icon: "globe", 
-      onPress: () => setLanguageModalVisible(true) 
+    {
+      label: "Language",
+      icon: "globe",
+      onPress: () => setLanguageModalVisible(true),
     },
-    { 
-      label: "Logout", 
-      icon: "log-out", 
-      onPress: () => setLogoutModalVisible(true) 
+    {
+      label: "Logout",
+      icon: "log-out",
+      onPress: () => setLogoutModalVisible(true),
     },
   ];
+
+  const handleLanguageChange = (langId: string, label: string) => {
+    i18n.locale = langId; // change la langue globale
+    setSelectedLanguage(label); // affiche le label dans le menu
+    forceUpdate((v) => v + 1); // force le re-render
+    setLanguageModalVisible(false);
+  };
 
   return (
     <View style={{ flex: 1, position: "relative" }}>
@@ -72,7 +81,10 @@ export default function ProfileScreen() {
           <Pressable onPress={() => router.back()}>
             <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
-          <Text className="text-white text-xl font-bold">Profile</Text>
+          {/* <Text className="text-white text-xl font-bold">Profile</Text> */}
+          <Text className="text-white text-xl font-bold">
+            {i18n.t("profile")}
+          </Text>
           <Pressable className="bg-[#DFEFF8] p-1 rounded-full">
             <Ionicons name="notifications-outline" size={20} color="#093030" />
           </Pressable>
@@ -112,7 +124,9 @@ export default function ProfileScreen() {
         }}
       >
         <View className="items-center mb-10">
-          <Text className="text-xl font-semibold text-[#093030]">John Smith</Text>
+          <Text className="text-xl font-semibold text-[#093030]">
+            John Smith
+          </Text>
           <Text className="text-sm text-[#093030] mt-1">ID: 25030024</Text>
         </View>
 
@@ -132,7 +146,9 @@ export default function ProfileScreen() {
                 </Text>
               </View>
               {item.label === "Language" && (
-                <Text className="text-gray-400 text-sm">{selectedLanguage}</Text>
+                <Text className="text-gray-400 text-sm">
+                  {selectedLanguage}
+                </Text>
               )}
             </Pressable>
           ))}
@@ -146,18 +162,78 @@ export default function ProfileScreen() {
         visible={isLogoutModalVisible}
         onRequestClose={() => setLogoutModalVisible(false)}
       >
-        <View style={{ flex: 1, backgroundColor: "rgba(30, 30, 30, 0.5)", justifyContent: "center", alignItems: "center", padding: 24 }}>
-          <View style={{ backgroundColor: "#FFFFFF", borderRadius: 40, width: "100%", padding: 32, alignItems: "center" }}>
-            <Text style={{ fontSize: 24, fontWeight: "700", color: "#1E1E1E", marginBottom: 12 }}>End Session</Text>
-            <Text style={{ fontSize: 16, color: "#363130", textAlign: "center", marginBottom: 32 }}>Are you sure you want to log out?</Text>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(30, 30, 30, 0.5)",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 24,
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "#FFFFFF",
+              borderRadius: 40,
+              width: "100%",
+              padding: 32,
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: "700",
+                color: "#1E1E1E",
+                marginBottom: 12,
+              }}
+            >
+              End Session
+            </Text>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#363130",
+                textAlign: "center",
+                marginBottom: 32,
+              }}
+            >
+              Are you sure you want to log out?
+            </Text>
             <Pressable
               onPress={() => setLogoutModalVisible(false)}
-              style={{ backgroundColor: "#0088FF", width: "100%", height: 50, borderRadius: 30, justifyContent: "center", alignItems: "center", marginBottom: 16 }}
+              style={{
+                backgroundColor: "#0088FF",
+                width: "100%",
+                height: 50,
+                borderRadius: 30,
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 16,
+              }}
             >
-              <Text style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "600" }}>Yes, End Session</Text>
+              <Text
+                style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "600" }}
+              >
+                Yes, End Session
+              </Text>
             </Pressable>
-            <Pressable onPress={() => setLogoutModalVisible(false)} style={{ backgroundColor: "#DFEFF8", width: "100%", height: 50, borderRadius: 30, justifyContent: "center", alignItems: "center" }}>
-              <Text style={{ color: "#0E3E3E", fontSize: 18, fontWeight: "600" }}>Cancel</Text>
+            <Pressable
+              onPress={() => setLogoutModalVisible(false)}
+              style={{
+                backgroundColor: "#DFEFF8",
+                width: "100%",
+                height: 50,
+                borderRadius: 30,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text
+                style={{ color: "#0E3E3E", fontSize: 18, fontWeight: "600" }}
+              >
+                Cancel
+              </Text>
             </Pressable>
           </View>
         </View>
@@ -170,10 +246,29 @@ export default function ProfileScreen() {
         visible={isLanguageModalVisible}
         onRequestClose={() => setLanguageModalVisible(false)}
       >
-        <View style={{ flex: 1, backgroundColor: "rgba(30, 30, 30, 0.5)", justifyContent: "flex-end" }}>
-          <View style={{ backgroundColor: "#FFFFFF", borderTopLeftRadius: 40, borderTopRightRadius: 40, width: "100%", padding: 32, maxHeight: height * 0.6 }}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(30, 30, 30, 0.5)",
+            justifyContent: "flex-end",
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "#FFFFFF",
+              borderTopLeftRadius: 40,
+              borderTopRightRadius: 40,
+              width: "100%",
+              padding: 32,
+              maxHeight: height * 0.6,
+            }}
+          >
             <View className="flex-row justify-between items-center mb-6">
-              <Text style={{ fontSize: 22, fontWeight: "700", color: "#1E1E1E" }}>Select Language</Text>
+              <Text
+                style={{ fontSize: 22, fontWeight: "700", color: "#1E1E1E" }}
+              >
+                Select Language
+              </Text>
               <Pressable onPress={() => setLanguageModalVisible(false)}>
                 <Ionicons name="close-circle" size={30} color="#0088FF" />
               </Pressable>
@@ -182,10 +277,11 @@ export default function ProfileScreen() {
             {languages.map((item) => (
               <Pressable
                 key={item.id}
-                onPress={() => {
-                  setSelectedLanguage(item.label);
-                  setLanguageModalVisible(false);
-                }}
+                // onPress={() => {
+                //   setSelectedLanguage(item.label);
+                //   setLanguageModalVisible(false);
+                // }}
+                onPress={() => handleLanguageChange(item.id, item.label)}
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
@@ -195,11 +291,14 @@ export default function ProfileScreen() {
                   borderBottomColor: "#F0F0F0",
                 }}
               >
-                <Text style={{ 
-                  fontSize: 17, 
-                  color: selectedLanguage === item.label ? "#0088FF" : "#363130",
-                  fontWeight: selectedLanguage === item.label ? "700" : "400" 
-                }}>
+                <Text
+                  style={{
+                    fontSize: 17,
+                    color:
+                      selectedLanguage === item.label ? "#0088FF" : "#363130",
+                    fontWeight: selectedLanguage === item.label ? "700" : "400",
+                  }}
+                >
                   {item.label}
                 </Text>
                 {selectedLanguage === item.label && (

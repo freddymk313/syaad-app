@@ -13,6 +13,7 @@ const i18n = new I18n({
     useFingerprint: "Use Fingerprint To Access",
     orSignInWith: "Or sign in with",
     dontHaveAccount: "Don't have an account?",
+    profile: "Profile",
   },
   fr: {
     welcome: "Bienvenue",
@@ -24,6 +25,7 @@ const i18n = new I18n({
     useFingerprint: "Utiliser l'empreinte digitale",
     orSignInWith: "Ou connectez-vous avec",
     dontHaveAccount: "Vous n'avez pas de compte ?",
+    profile: "Profil",
   },
   es: {
     welcome: "Bienvenido",
@@ -35,6 +37,7 @@ const i18n = new I18n({
     useFingerprint: "Usar huella digital",
     orSignInWith: "O inicia sesión con",
     dontHaveAccount: "¿No tienes una cuenta?",
+    profile: "Perfil",
   },
 });
 
