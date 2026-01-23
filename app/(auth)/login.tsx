@@ -144,8 +144,8 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             {/* Log In */}
             <Pressable
               className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center"
-              // onPress={() => router.navigate("/(tabs)/home")}
-              onPress={handleLogin}
+              onPress={() => router.navigate("/(tabs)/home")}
+              // onPress={handleLogin}
             >
               <Text
                 // className="text-white"
