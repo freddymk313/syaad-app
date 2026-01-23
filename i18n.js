@@ -1,10 +1,8 @@
 // i18n.js
-import * as Localization from "expo-localization";
+import { getLocales } from "expo-localization";
 import { I18n } from "i18n-js";
 
-const i18n = new I18n();
-
-i18n.translations = {
+const i18n = new I18n({
   en: {
     welcome: "Welcome",
     usernameOrEmail: "Username or Email",
@@ -38,9 +36,12 @@ i18n.translations = {
     orSignInWith: "O inicia sesión con",
     dontHaveAccount: "¿No tienes una cuenta?",
   },
-};
+});
 
-i18n.locale = Localization.locale.split("-")[0]; // ex: fr, en
-i18n.fallbacks = true;
+// ✅ NOUVELLE FAÇON (Expo actuel)
+const deviceLanguage = getLocales()[0]?.languageCode ?? "fr";
+i18n.locale = deviceLanguage;
+
+i18n.enableFallback = true;
 
 export default i18n;
