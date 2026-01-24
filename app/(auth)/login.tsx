@@ -1,5 +1,4 @@
 import InputField from "@/components/form/InputField";
-import i18n from "@/i18n";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
@@ -14,6 +13,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Alert,
 } from "react-native";
 import {
   FingerPrintIcon,
@@ -24,7 +24,7 @@ import { SvgProps } from "react-native-svg";
 
 import { login } from "@/services/auth.service";
 import { useAuthStore } from "@/store/auth.store";
-import { Alert } from "react-native";
+import { useTranslation } from "@/hooks/useTranslation";
 
 type RootStackParamList = {
   Login: undefined;
@@ -49,6 +49,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
   const [password, setPassword] = React.useState<string>("");
   const router = useRouter();
   const { loginSuccess } = useAuthStore();
+  const { t } = useTranslation();
 
   const handleSignUpPress = () => {
     router.navigate("/(auth)/register");
@@ -67,33 +68,24 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
       }
     } catch (error: any) {
       Alert.alert(
-        "Erreur de connexion",
-        error?.response?.data?.message || "Identifiants incorrects",
+        t("login.login_error_title"),
+        error?.response?.data?.message || t("login.login_error_message")
       );
     }
   };
 
   return (
-    <KeyboardAvoidingView
-      className="flex-1"
-      // behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
+    <KeyboardAvoidingView className="flex-1">
       <LinearGradient
         colors={["#0088FF", "#005299"]}
-        locations={[0.01, 0.45]} // 1% pour #0088FF, 45% pour #005299
+        locations={[0.01, 0.45]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ flex: 1 }}
       >
-        <View
-          className="flex-1"
-          // showsVerticalScrollIndicator={false}
-          // contentContainerStyle={{ paddingBottom: 40 }}
-        >
+        <View className="flex-1">
           {/* Header */}
           <View
-            // className="flex justify-center items-center border-2 border-red-500"
-            // style={{ height: HEADER_HEIGHT, paddingTop: 40 }}
             style={{
               height: HEADER_HEIGHT,
               paddingTop: 40,
@@ -102,41 +94,33 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             }}
           >
             <Text className="text-3xl font-semibold text-[#FFFFFF]">
-              {/* Welcome */}
-              {i18n.t("welcome")}
+              {t("login.welcome")}
             </Text>
           </View>
 
           {/* Card */}
           <ScrollView
             className="bg-[#FFFFFF] rounded-t-[60px] px-8 pt-8 pb-10 flex-1 shadow-2xl"
-            // style={{ marginTop: -20, minHeight: height - HEADER_HEIGHT + 20 }}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={
-              {
-                // paddingHorizontal: 25,
-                // backgroundColor: "#FFFFFF",
-                // paddingVertical: 32,
-                // paddingBottom: 40,
-                // borderTopStartRadius: 60,
-                // borderTopEndRadius: 60
-              }
-            }
           >
             {/* Champs de saisie */}
             <View className="mb-5 mt-6">
-              <Text className="text-[#093030] mb-2">Username Or Email</Text>
+              <Text className="text-[#093030] mb-2">
+                {t("login.username_or_email")}
+              </Text>
               <InputField
                 Icon={UserIcon}
-                placeholder="example@example.com"
+                placeholder={t("login.username_or_email_placeholder")}
                 value={email}
                 onChangeText={setEmail}
               />
 
-              <Text className="text-[#093030] mb-2 mt-3.5">Password</Text>
+              <Text className="text-[#093030] mb-2 mt-3.5">
+                {t("login.password")}
+              </Text>
               <InputField
                 Icon={LockClosedIcon}
-                placeholder="********"
+                placeholder={t("login.password_placeholder")}
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry
@@ -146,18 +130,17 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             {/* Log In */}
             <Pressable
               className="bg-[#0088FF] py-4 w-[60%] self-center rounded-full items-center justify-center"
-              onPress={() => router.navigate("/(tabs)/home")}
               // onPress={handleLogin}
+              onPress={() => router.navigate("/(tabs)/home")}
             >
               <Text
-                // className="text-white"
                 style={{
                   fontFamily: "PoppinsBold",
                   fontSize: 15,
                   color: "#FFFFFF",
                 }}
               >
-                Log In
+                {t("login.log_in")}
               </Text>
             </Pressable>
 
@@ -167,7 +150,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
               onPress={() => router.navigate("/(auth)/forgotpassword")}
             >
               <Text className="text-sm text-[#093030] font-semibold">
-                Forgot Password?
+                {t("login.forgot_password")}
               </Text>
             </TouchableOpacity>
 
@@ -177,14 +160,13 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
               onPress={handleSignUpPress}
             >
               <Text
-                // className="text-[#0E3E3E]"
                 style={{
                   fontFamily: "PoppinsBold",
                   fontSize: 15,
                   color: "#0E3E3E",
                 }}
               >
-                Sign Up
+                {t("login.sign_up")}
               </Text>
             </Pressable>
 
@@ -195,14 +177,14 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             >
               <FingerPrintIcon width={24} height={24} color="#0088FF" />
               <Text className="text-sm text-gray-600">
-                Use Fingerprint To Access
+                {t("login.use_fingerprint")}
               </Text>
             </TouchableOpacity>
 
-            {/* google and facebook sign in */}
+            {/* Google and Facebook sign in */}
             <View className="flex justify-center mt-4 gap-3">
               <Text className="text-[#093030] text-center text-xs">
-                Or sign in with
+                {t("login.or_sign_in_with")}
               </Text>
 
               <View className="flex-row justify-center gap-6">
@@ -226,10 +208,10 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
 
             {/* Don't have account */}
             <View className="flex-row justify-center mt-4">
-              <Text className="text-gray-500">Don't have an account?</Text>
+              <Text className="text-gray-500">{t("login.dont_have_account")}</Text>
               <TouchableOpacity onPress={handleSignUpPress}>
                 <Text className="text-[#0088FF] font-semibold ml-1">
-                  Sign Up
+                  {t("login.sign_up")}
                 </Text>
               </TouchableOpacity>
             </View>

@@ -1,4 +1,23 @@
 {
-  "profile": "个人资料",
-  "welcome": "欢迎"
+  "login": {
+    "welcome": "欢迎",
+    "username_or_email": "用户名或邮箱",
+    "username_or_email_placeholder": "example@example.com",
+    "password": "密码",
+    "password_placeholder": "********",
+    "log_in": "登录",
+    "forgot_password": "忘记密码？",
+    "sign_up": "注册",
+    "use_fingerprint": "使用指纹访问",
+    "or_sign_in_with": "或使用以下方式登录",
+    "dont_have_account": "还没有账户？"
+  },
+
+  "profile": {
+    "profile": "个人资料",
+    "edit_profile": "编辑资料",
+    "security": "安全",
+    "language": "语言",
+    "logout": "登出"
+  }
 }

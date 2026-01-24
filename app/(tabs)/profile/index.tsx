@@ -87,7 +87,7 @@ export default function ProfileScreen() {
           <Pressable onPress={() => router.back()}>
             <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
-          <Text className="text-white text-xl font-bold">{t("profile")}</Text>
+          <Text className="text-white text-xl font-bold">{t("profile.profile")}</Text>
           <Pressable className="bg-[#DFEFF8] p-1 rounded-full">
             <Ionicons name="notifications-outline" size={20} color="#093030" />
           </Pressable>

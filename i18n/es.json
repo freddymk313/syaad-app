@@ -1,4 +1,23 @@
 {
-  "profile": "Perfil",
-  "welcome": "Bienvenido"
+  "login": {
+    "welcome": "Bienvenido",
+    "username_or_email": "Usuario o correo electrónico",
+    "username_or_email_placeholder": "ejemplo@ejemplo.com",
+    "password": "Contraseña",
+    "password_placeholder": "********",
+    "log_in": "Iniciar sesión",
+    "forgot_password": "¿Olvidaste tu contraseña?",
+    "sign_up": "Registrarse",
+    "use_fingerprint": "Usar huella digital para acceder",
+    "or_sign_in_with": "O inicia sesión con",
+    "dont_have_account": "¿No tienes una cuenta?"
+  },
+
+  "profile": {
+    "profile": "Perfil",
+    "edit_profile": "Editar perfil",
+    "security": "Seguridad",
+    "language": "Idioma",
+    "logout": "Cerrar sesión"
+  }
 }
