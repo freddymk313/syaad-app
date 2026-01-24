@@ -18,6 +18,12 @@
     "edit_profile": "Edit Profile",
     "security": "Security",
     "language": "Language",
-    "logout": "Logout"
+    "logout": "Logout",
+    "setting": "Settings",
+    "select_language": "Select Language",
+    "end_session": "End Session",
+    "logout_confirmation": "Are you sure you want to log out?",
+    "yes_end_session": "Yes, End Session",
+    "cancel": "Cancel"
   }
 }

@@ -15,9 +15,15 @@
 
   "profile": {
     "profile": "个人资料",
-    "edit_profile": "编辑资料",
+    "edit_profile": "编辑个人资料",
     "security": "安全",
     "language": "语言",
-    "logout": "登出"
+    "logout": "登出",
+    "setting": "设置",
+    "select_language": "选择语言",
+    "end_session": "结束会话",
+    "logout_confirmation": "您确定要登出吗？",
+    "yes_end_session": "是的，结束会话",
+    "cancel": "取消"
   }
 }

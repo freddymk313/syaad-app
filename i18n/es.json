@@ -18,6 +18,12 @@
     "edit_profile": "Editar perfil",
     "security": "Seguridad",
     "language": "Idioma",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "setting": "Configuración",
+    "select_language": "Seleccionar idioma",
+    "end_session": "Cerrar sesión",
+    "logout_confirmation": "¿Estás seguro de que deseas cerrar sesión?",
+    "yes_end_session": "Sí, cerrar sesión",
+    "cancel": "Cancelar"
   }
 }

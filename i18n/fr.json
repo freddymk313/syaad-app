@@ -18,6 +18,12 @@
     "edit_profile": "Modifier le profil",
     "security": "Sécurité",
     "language": "Langue",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "setting": "Paramètres",
+    "select_language": "Sélectionner la langue",
+    "end_session": "Fin de session",
+    "logout_confirmation": "Êtes-vous sûr de vouloir vous déconnecter ?",
+    "yes_end_session": "Oui, terminer la session",
+    "cancel": "Annuler"
   }
 }
