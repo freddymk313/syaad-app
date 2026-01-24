@@ -43,25 +43,58 @@ export default function ProfileScreen() {
   const currentLanguageLabel =
     languages.find((l) => l.id === language)?.label ?? "English";
 
+  // const menuItems = [
+  //   {
+  //     label: t("profile.edit_profile"),
+  //     icon: "user",
+  //     onPress: () => router.push("/profile/edit"),
+  //   },
+  //   {
+  //     label: t("profile.security"),
+  //     icon: "shield",
+  //     onPress: () => router.push("/profile/security"),
+  //   },
+  //   { label: t("profile.setting"), icon: "settings", onPress: () => {} },
+  //   {
+  //     label: t("profile.language"),
+  //     icon: "globe",
+  //     onPress: () => setLanguageModalVisible(true),
+  //   },
+  //   {
+  //     label: t("profile.logout"),
+  //     icon: "log-out",
+  //     onPress: () => setLogoutModalVisible(true),
+  //   },
+  // ];
+
   const menuItems = [
     {
-      label: "Edit Profile",
+      key: "edit_profile",
+      label: t("profile.edit_profile"),
       icon: "user",
       onPress: () => router.push("/profile/edit"),
     },
     {
-      label: "Security",
+      key: "security",
+      label: t("profile.security"),
       icon: "shield",
       onPress: () => router.push("/profile/security"),
     },
-    { label: "Setting", icon: "settings", onPress: () => {} },
     {
-      label: "Language",
+      key: "setting",
+      label: t("profile.setting"),
+      icon: "settings",
+      onPress: () => {},
+    },
+    {
+      key: "language",
+      label: t("profile.language"),
       icon: "globe",
       onPress: () => setLanguageModalVisible(true),
     },
     {
-      label: "Logout",
+      key: "logout",
+      label: t("profile.logout"),
       icon: "log-out",
       onPress: () => setLogoutModalVisible(true),
     },
@@ -87,7 +120,9 @@ export default function ProfileScreen() {
           <Pressable onPress={() => router.back()}>
             <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
-          <Text className="text-white text-xl font-bold">{t("profile.profile")}</Text>
+          <Text className="text-white text-xl font-bold">
+            {t("profile.profile")}
+          </Text>
           <Pressable className="bg-[#DFEFF8] p-1 rounded-full">
             <Ionicons name="notifications-outline" size={20} color="#093030" />
           </Pressable>
@@ -150,7 +185,8 @@ export default function ProfileScreen() {
                   {item.label}
                 </Text>
               </View>
-              {item.label === "Language" && (
+              {/* {item.label === "Language" && ( */}
+              {item.key === "language" && (
                 <Text className="text-gray-400 text-sm">
                   {currentLanguageLabel}
                 </Text>
@@ -188,7 +224,7 @@ export default function ProfileScreen() {
               <Text
                 style={{ fontSize: 22, fontWeight: "700", color: "#1E1E1E" }}
               >
-                Select Language
+                {t("profile.select_language")}
               </Text>
               <Pressable onPress={() => setLanguageModalVisible(false)}>
                 <Ionicons name="close-circle" size={30} color="#0088FF" />
@@ -259,7 +295,7 @@ export default function ProfileScreen() {
                 marginBottom: 12,
               }}
             >
-              End Session
+              {t("profile.end_session")}
             </Text>
             <Text
               style={{
@@ -269,7 +305,7 @@ export default function ProfileScreen() {
                 marginBottom: 32,
               }}
             >
-              Are you sure you want to log out?
+              {t("profile.logout_confirmation")}
             </Text>
             <Pressable
               onPress={() => setLogoutModalVisible(false)}
@@ -286,7 +322,7 @@ export default function ProfileScreen() {
               <Text
                 style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "600" }}
               >
-                Yes, End Session
+                {t("profile.yes_end_session")}
               </Text>
             </Pressable>
             <Pressable
@@ -303,7 +339,7 @@ export default function ProfileScreen() {
               <Text
                 style={{ color: "#0E3E3E", fontSize: 18, fontWeight: "600" }}
               >
-                Cancel
+                {t("profile.cancel")}
               </Text>
             </Pressable>
           </View>
