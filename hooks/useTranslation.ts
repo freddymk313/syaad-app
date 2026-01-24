@@ -36,8 +36,8 @@
 
 // hooks/useTranslation.ts
 
-import { useLanguageStore } from "@/store/language.store";
 import i18n from "@/i18n";
+import { useLanguageStore } from "@/store/language.store";
 
 export function useTranslation() {
   const language = useLanguageStore((state) => state.language);
@@ -47,6 +47,3 @@ export function useTranslation() {
     language,
   };
 }
-
-
-

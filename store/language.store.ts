@@ -81,7 +81,6 @@
 //   },
 // }));
 
-
 // import { create } from "zustand";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 // import i18n from "@/i18n";
@@ -111,9 +110,9 @@
 // }));
 
 // store/language.store.ts
-import { create } from "zustand";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import i18n from "@/i18n";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { create } from "zustand";
 
 interface LanguageState {
   language: string;
@@ -124,9 +123,9 @@ interface LanguageState {
 export const useLanguageStore = create<LanguageState>((set) => ({
   language: i18n.locale,
   setLanguage: async (lang) => {
-    i18n.locale = lang;          // change la langue
+    i18n.locale = lang; // change la langue
     await AsyncStorage.setItem("language", lang);
-    set({ language: lang });      // 🔥 force le re-render global
+    set({ language: lang }); // 🔥 force le re-render global
   },
   hydrate: async () => {
     const storedLang = await AsyncStorage.getItem("language");

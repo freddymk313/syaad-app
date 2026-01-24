@@ -1,21 +1,21 @@
-import {
-  View,
-  Text,
-  Image,
-  Pressable,
-  ScrollView,
-  Dimensions,
-  Modal,
-} from "react-native";
-import React, { useState } from "react";
-import { LinearGradient } from "expo-linear-gradient";
-import { StatusBar } from "expo-status-bar";
-import { useRouter } from "expo-router";
+import { useTranslation } from "@/hooks/useTranslation";
+import i18n from "@/i18n";
+import { useLanguageStore } from "@/store/language.store";
 import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useLanguageStore } from "@/store/language.store";
-import i18n from "@/i18n";
+import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
+import {
+  Dimensions,
+  Image,
+  Modal,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 
 const { height } = Dimensions.get("window");
 const HEADER_HEIGHT = height * 0.28;
@@ -44,19 +44,34 @@ export default function ProfileScreen() {
     languages.find((l) => l.id === language)?.label ?? "English";
 
   const menuItems = [
-    { label: "Edit Profile", icon: "user", onPress: () => router.push("/profile/edit") },
-    { label: "Security", icon: "shield", onPress: () => router.push("/profile/security") },
+    {
+      label: "Edit Profile",
+      icon: "user",
+      onPress: () => router.push("/profile/edit"),
+    },
+    {
+      label: "Security",
+      icon: "shield",
+      onPress: () => router.push("/profile/security"),
+    },
     { label: "Setting", icon: "settings", onPress: () => {} },
-    { label: "Language", icon: "globe", onPress: () => setLanguageModalVisible(true) },
-    { label: "Logout", icon: "log-out", onPress: () => setLogoutModalVisible(true) },
+    {
+      label: "Language",
+      icon: "globe",
+      onPress: () => setLanguageModalVisible(true),
+    },
+    {
+      label: "Logout",
+      icon: "log-out",
+      onPress: () => setLogoutModalVisible(true),
+    },
   ];
 
   const handleLanguageChange = (langId: string) => {
-  setLanguage(langId);    // met à jour le store
-  i18n.locale = langId;  // 🔥 force i18n à utiliser la nouvelle langue
-  setLanguageModalVisible(false);
-};
-
+    setLanguage(langId); // met à jour le store
+    i18n.locale = langId; // 🔥 force i18n à utiliser la nouvelle langue
+    setLanguageModalVisible(false);
+  };
 
   return (
     <View style={{ flex: 1, position: "relative" }}>
@@ -114,7 +129,9 @@ export default function ProfileScreen() {
         }}
       >
         <View className="items-center mb-10">
-          <Text className="text-xl font-semibold text-[#093030]">John Smith</Text>
+          <Text className="text-xl font-semibold text-[#093030]">
+            John Smith
+          </Text>
           <Text className="text-sm text-[#093030] mt-1">ID: 25030024</Text>
         </View>
 
@@ -129,10 +146,14 @@ export default function ProfileScreen() {
                 <View className="w-12 h-12 rounded-[20px] bg-[#3299FF] items-center justify-center mr-4">
                   <Feather name={item.icon as any} size={22} color="#fff" />
                 </View>
-                <Text className="text-[#093030] text-base font-medium">{item.label}</Text>
+                <Text className="text-[#093030] text-base font-medium">
+                  {item.label}
+                </Text>
               </View>
               {item.label === "Language" && (
-                <Text className="text-gray-400 text-sm">{currentLanguageLabel}</Text>
+                <Text className="text-gray-400 text-sm">
+                  {currentLanguageLabel}
+                </Text>
               )}
             </Pressable>
           ))}
@@ -164,7 +185,9 @@ export default function ProfileScreen() {
             }}
           >
             <View className="flex-row justify-between items-center mb-6">
-              <Text style={{ fontSize: 22, fontWeight: "700", color: "#1E1E1E" }}>
+              <Text
+                style={{ fontSize: 22, fontWeight: "700", color: "#1E1E1E" }}
+              >
                 Select Language
               </Text>
               <Pressable onPress={() => setLanguageModalVisible(false)}>
@@ -228,10 +251,24 @@ export default function ProfileScreen() {
               alignItems: "center",
             }}
           >
-            <Text style={{ fontSize: 24, fontWeight: "700", color: "#1E1E1E", marginBottom: 12 }}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: "700",
+                color: "#1E1E1E",
+                marginBottom: 12,
+              }}
+            >
               End Session
             </Text>
-            <Text style={{ fontSize: 16, color: "#363130", textAlign: "center", marginBottom: 32 }}>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#363130",
+                textAlign: "center",
+                marginBottom: 32,
+              }}
+            >
               Are you sure you want to log out?
             </Text>
             <Pressable
@@ -246,7 +283,9 @@ export default function ProfileScreen() {
                 marginBottom: 16,
               }}
             >
-              <Text style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "600" }}>
+              <Text
+                style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "600" }}
+              >
                 Yes, End Session
               </Text>
             </Pressable>
@@ -261,7 +300,9 @@ export default function ProfileScreen() {
                 alignItems: "center",
               }}
             >
-              <Text style={{ color: "#0E3E3E", fontSize: 18, fontWeight: "600" }}>
+              <Text
+                style={{ color: "#0E3E3E", fontSize: 18, fontWeight: "600" }}
+              >
                 Cancel
               </Text>
             </Pressable>
