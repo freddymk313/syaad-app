@@ -1,4 +1,14 @@
 {
+    "onboarding": {
+    "slides": [
+      { "title": "Bienvenido a Expense Manager" },
+      { "title": "Sus declaraciones aduaneras, simplificadas" },
+      { "title": "La aduana nunca ha sido tan fácil." },
+      { "title": "Domine su cumplimiento aduanero." }
+    ],
+    "next_button": "Siguiente"
+  }, 
+  
   "login": {
     "welcome": "Bienvenido",
     "username_or_email": "Usuario o correo electrónico",

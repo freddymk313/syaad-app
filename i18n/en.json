@@ -1,4 +1,14 @@
 {
+  "onboarding": {
+    "slides": [
+      { "title": "Welcome to Expense Manager" },
+      { "title": "Your customs declarations, simplified" },
+      { "title": "Customs has never been this easy." },
+      { "title": "Master your customs compliance." }
+    ],
+    "next_button": "Next"
+  },
+
   "login": {
     "welcome": "Welcome",
     "username_or_email": "Username or Email",

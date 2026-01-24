@@ -1,4 +1,14 @@
 {
+  "onboarding": {
+    "slides": [
+      { "title": "欢迎使用 Expense Manager" },
+      { "title": "您的海关申报，简化处理" },
+      { "title": "海关从未如此简单" },
+      { "title": "掌握您的海关合规" }
+    ],
+    "next_button": "下一步"
+  },
+
   "login": {
     "welcome": "欢迎",
     "username_or_email": "用户名或邮箱",
