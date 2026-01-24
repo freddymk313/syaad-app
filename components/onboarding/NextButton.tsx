@@ -1,7 +1,7 @@
 import { Text, Pressable } from "react-native";
 import React from "react";
 
-export default function NextButton({ onPress }: { onPress: () => void }) {
+export default function NextButton({ onPress, label }: { onPress: () => void, label: string }) {
   return (
     <Pressable
       onPress={onPress}
@@ -11,7 +11,7 @@ export default function NextButton({ onPress }: { onPress: () => void }) {
         // className="text-white"
         style={{ fontFamily: "PoppinsBold", fontSize: 15, color: "#FFFFFF" }}
       >
-        Next
+        {label}
       </Text>
     </Pressable>
   );
