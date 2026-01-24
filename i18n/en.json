@@ -1,0 +1,39 @@
+{
+  "onboarding": {
+    "slides": [
+      { "title": "Welcome to SYAAD" },
+      { "title": "Your customs declarations, simplified" },
+      { "title": "Customs has never been this easy." },
+      { "title": "Master your customs compliance." }
+    ],
+    "next_button": "Next"
+  },
+
+  "login": {
+    "welcome": "Welcome",
+    "username_or_email": "Username or Email",
+    "username_or_email_placeholder": "example@example.com",
+    "password": "Password",
+    "password_placeholder": "********",
+    "log_in": "Log In",
+    "forgot_password": "Forgot Password?",
+    "sign_up": "Sign Up",
+    "use_fingerprint": "Use Fingerprint To Access",
+    "or_sign_in_with": "Or sign in with",
+    "dont_have_account": "Don't have an account?"
+  },
+
+  "profile": {
+    "profile": "Profile",
+    "edit_profile": "Edit Profile",
+    "security": "Security",
+    "language": "Language",
+    "logout": "Logout",
+    "setting": "Settings",
+    "select_language": "Select Language",
+    "end_session": "End Session",
+    "logout_confirmation": "Are you sure you want to log out?",
+    "yes_end_session": "Yes, End Session",
+    "cancel": "Cancel"
+  }
+}

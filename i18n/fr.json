@@ -1,0 +1,39 @@
+{
+  "onboarding": {
+    "slides": [
+      { "title": "Bienvenue dans SYAAD" },
+      { "title": "Vos déclarations douanières, simplifiées" },
+      { "title": "La douane n'a jamais été aussi simple." },
+      { "title": "Maîtrisez votre conformité douanière." }
+    ],
+    "next_button": "Suivant"
+  },
+
+  "login": {
+    "welcome": "Bienvenue",
+    "username_or_email": "Nom d'utilisateur ou Email",
+    "username_or_email_placeholder": "exemple@exemple.com",
+    "password": "Mot de passe",
+    "password_placeholder": "********",
+    "log_in": "Se connecter",
+    "forgot_password": "Mot de passe oublié ?",
+    "sign_up": "S'inscrire",
+    "use_fingerprint": "Utiliser l'empreinte digitale pour accéder",
+    "or_sign_in_with": "Ou connectez-vous avec",
+    "dont_have_account": "Vous n'avez pas de compte ?"
+  },
+
+  "profile": {
+    "profile": "Profil",
+    "edit_profile": "Modifier le profil",
+    "security": "Sécurité",
+    "language": "Langue",
+    "logout": "Déconnexion",
+    "setting": "Paramètres",
+    "select_language": "Sélectionner la langue",
+    "end_session": "Fin de session",
+    "logout_confirmation": "Êtes-vous sûr de vouloir vous déconnecter ?",
+    "yes_end_session": "Oui, terminer la session",
+    "cancel": "Annuler"
+  }
+}

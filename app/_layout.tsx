@@ -11,11 +11,12 @@ import { useFonts } from "expo-font";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
-// import './i18n';
+import { useLanguageStore } from "@/store/language.store";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const hydrate = useLanguageStore((s) => s.hydrate);
   const colorScheme = useColorScheme();
 
   const [loaded] = useFonts({
@@ -24,6 +25,12 @@ export default function RootLayout() {
     PoppinsSemiBold: require("../assets/fonts/Poppins-SemiBold.ttf"),
     PoppinsBold: require("../assets/fonts/Poppins-Bold.ttf"),
   });
+
+  // const hydrateLanguage = useLanguageStore((state) => state.hydrateLanguage);
+
+   useEffect(() => {
+    hydrate();
+  }, []);
 
   useEffect(() => {
     if (loaded) {

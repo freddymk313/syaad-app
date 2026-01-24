@@ -1,18 +1,21 @@
-import {
-  View,
-  Text,
-  Image,
-  Pressable,
-  ScrollView,
-  Dimensions,
-  Modal,
-} from "react-native";
-import React, { useState } from "react";
-import { LinearGradient } from "expo-linear-gradient";
-import { StatusBar } from "expo-status-bar";
-import { useRouter } from "expo-router";
+import { useTranslation } from "@/hooks/useTranslation";
+import i18n from "@/i18n";
+import { useLanguageStore } from "@/store/language.store";
 import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
+import {
+  Dimensions,
+  Image,
+  Modal,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 
 const { height } = Dimensions.get("window");
 const HEADER_HEIGHT = height * 0.28;
@@ -21,57 +24,118 @@ const CARD_OVERLAP = 60;
 
 export default function ProfileScreen() {
   const router = useRouter();
-  const [isModalVisible, setModalVisible] = useState(false);
+
+  // Modals
+  const [isLogoutModalVisible, setLogoutModalVisible] = useState(false);
+  const [isLanguageModalVisible, setLanguageModalVisible] = useState(false);
+
+  // Language store
+  const { language, setLanguage } = useLanguageStore();
+  const { t } = useTranslation(); // 🔥 se re-render à chaque changement de language
+
+  const languages = [
+    { id: "fr", label: "Français" },
+    { id: "en", label: "English" },
+    { id: "es", label: "Español" },
+    { id: "zh", label: "中文 (Chinois)" },
+  ];
+
+  const currentLanguageLabel =
+    languages.find((l) => l.id === language)?.label ?? "English";
+
+  // const menuItems = [
+  //   {
+  //     label: t("profile.edit_profile"),
+  //     icon: "user",
+  //     onPress: () => router.push("/profile/edit"),
+  //   },
+  //   {
+  //     label: t("profile.security"),
+  //     icon: "shield",
+  //     onPress: () => router.push("/profile/security"),
+  //   },
+  //   { label: t("profile.setting"), icon: "settings", onPress: () => {} },
+  //   {
+  //     label: t("profile.language"),
+  //     icon: "globe",
+  //     onPress: () => setLanguageModalVisible(true),
+  //   },
+  //   {
+  //     label: t("profile.logout"),
+  //     icon: "log-out",
+  //     onPress: () => setLogoutModalVisible(true),
+  //   },
+  // ];
 
   const menuItems = [
     {
-      label: "Edit Profile",
+      key: "edit_profile",
+      label: t("profile.edit_profile"),
       icon: "user",
-      onPress: () => {
-        router.push("/profile/edit");
-      },
+      onPress: () => router.push("/profile/edit"),
     },
     {
-      label: "Security",
+      key: "security",
+      label: t("profile.security"),
       icon: "shield",
-      onPress: () => {
-        router.push("/profile/security");
-      },
+      onPress: () => router.push("/profile/security"),
     },
-    { label: "Setting", icon: "settings", onPress: () => {} },
-    { label: "Help", icon: "help-circle", onPress: () => {} },
-    { label: "Logout", icon: "log-out", onPress: () => setModalVisible(true) },
+    {
+      key: "setting",
+      label: t("profile.setting"),
+      icon: "settings",
+      onPress: () => {},
+    },
+    {
+      key: "language",
+      label: t("profile.language"),
+      icon: "globe",
+      onPress: () => setLanguageModalVisible(true),
+    },
+    {
+      key: "logout",
+      label: t("profile.logout"),
+      icon: "log-out",
+      onPress: () => setLogoutModalVisible(true),
+    },
   ];
+
+  const handleLanguageChange = (langId: string) => {
+    setLanguage(langId); // met à jour le store
+    i18n.locale = langId; // 🔥 force i18n à utiliser la nouvelle langue
+    setLanguageModalVisible(false);
+  };
 
   return (
     <View style={{ flex: 1, position: "relative" }}>
+      {/* HEADER */}
       <LinearGradient
         colors={["#0088FF", "#005299"]}
-        locations={[0, 0.74]} // 1% pour #0088FF, 45% pour #005299
+        locations={[0, 0.74]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ height: HEADER_HEIGHT }}
       >
-        {/* HEADER */}
         <View className="flex-row items-center justify-between px-6 pt-15 ios:pt-20">
           <Pressable onPress={() => router.back()}>
             <Ionicons name="arrow-back" size={24} color="white" />
           </Pressable>
-
-          <Text className="text-white text-xl font-bold fontp">Profile</Text>
-
+          <Text className="text-white text-xl font-bold">
+            {t("profile.profile")}
+          </Text>
           <Pressable className="bg-[#DFEFF8] p-1 rounded-full">
             <Ionicons name="notifications-outline" size={20} color="#093030" />
           </Pressable>
         </View>
       </LinearGradient>
 
+      {/* AVATAR */}
       <View
         style={{
           position: "absolute",
           top: HEADER_HEIGHT - CARD_OVERLAP - AVATAR_SIZE / 2,
           alignSelf: "center",
-          zIndex: 20, // Toujours au-dessus de tout
+          zIndex: 20,
           elevation: 5,
         }}
       >
@@ -81,65 +145,24 @@ export default function ProfileScreen() {
             width: AVATAR_SIZE,
             height: AVATAR_SIZE,
             borderRadius: AVATAR_SIZE / 2,
-            // borderWidth: 4,
-            // borderColor: "#fff",
           }}
         />
       </View>
 
-      {/* CARD */}
+      {/* MENU */}
       <ScrollView
         showsVerticalScrollIndicator={false}
-        // className="flex-1 bg-white rounded-t-[60px] -mt-16 px-6 pt-20"
         style={{
-          // flex: 1,
-          // backgroundColor: "white",
-          // borderTopLeftRadius: 60,
-          // borderTopRightRadius: 60,
-          // // marginTop: -40,
-          // paddingTop: AVATAR_SIZE / 2 + 20, // 👈 place les infos sous l’avatar
-          // paddingHorizontal: 24,
-
           flex: 1,
           backgroundColor: "white",
           borderTopLeftRadius: 60,
           borderTopRightRadius: 60,
           paddingTop: AVATAR_SIZE / 2 + 20,
-          marginTop: -CARD_OVERLAP, // Fait remonter la carte sur le bleu
+          marginTop: -CARD_OVERLAP,
           zIndex: 10,
           paddingHorizontal: 24,
         }}
       >
-        {/* AVATAR */}
-        {/* <View
-          style={{
-            position: "absolute",
-            top: -AVATAR_SIZE / 2,
-            alignSelf: "center",
-          }}
-        >
-          <Image
-            source={{
-              uri: "https://i.pravatar.cc/300",
-            }}
-            style={{
-              width: AVATAR_SIZE,
-              height: AVATAR_SIZE,
-              borderRadius: AVATAR_SIZE / 2,
-              borderWidth: 4,
-              borderColor: "#fff",
-            }}
-          />
-        </View> */}
-
-        {/* USER INFO */}
-        {/* <View className="items-center mb-10">
-          <Text className="text-xl font-semibold text-[#093030]">
-            John Smith
-          </Text>
-          <Text className="text-sm text-gray-400 mt-1">ID: 25030024</Text>
-        </View> */}
-
         <View className="items-center mb-10">
           <Text className="text-xl font-semibold text-[#093030]">
             John Smith
@@ -147,34 +170,105 @@ export default function ProfileScreen() {
           <Text className="text-sm text-[#093030] mt-1">ID: 25030024</Text>
         </View>
 
-        {/* MENU */}
-        <View className="gap-6">
+        <View className="gap-6 mb-10">
           {menuItems.map((item, index) => (
             <Pressable
               key={index}
               onPress={item.onPress}
-              className="flex-row items-center"
+              className="flex-row items-center justify-between"
             >
-              <View className="w-14.25 h-13.5 rounded-[22px] bg-[#3299FF] items-center justify-center mr-4">
-                <Feather name={item.icon as any} size={24} color="#fff" />
+              <View className="flex-row items-center">
+                <View className="w-12 h-12 rounded-[20px] bg-[#3299FF] items-center justify-center mr-4">
+                  <Feather name={item.icon as any} size={22} color="#fff" />
+                </View>
+                <Text className="text-[#093030] text-base font-medium">
+                  {item.label}
+                </Text>
               </View>
-
-              <Text className="text-[#093030] text-base font-medium">
-                {item.label}
-              </Text>
+              {/* {item.label === "Language" && ( */}
+              {item.key === "language" && (
+                <Text className="text-gray-400 text-sm">
+                  {currentLanguageLabel}
+                </Text>
+              )}
             </Pressable>
           ))}
         </View>
       </ScrollView>
 
-      {/* MODAL DE DÉCONNEXION */}
+      {/* MODAL LANGUE */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isLanguageModalVisible}
+        onRequestClose={() => setLanguageModalVisible(false)}
+      >
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(30, 30, 30, 0.5)",
+            justifyContent: "flex-end",
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "#FFFFFF",
+              borderTopLeftRadius: 40,
+              borderTopRightRadius: 40,
+              width: "100%",
+              padding: 32,
+              maxHeight: height * 0.6,
+            }}
+          >
+            <View className="flex-row justify-between items-center mb-6">
+              <Text
+                style={{ fontSize: 22, fontWeight: "700", color: "#1E1E1E" }}
+              >
+                {t("profile.select_language")}
+              </Text>
+              <Pressable onPress={() => setLanguageModalVisible(false)}>
+                <Ionicons name="close-circle" size={30} color="#0088FF" />
+              </Pressable>
+            </View>
+
+            {languages.map((item) => (
+              <Pressable
+                key={item.id}
+                onPress={() => handleLanguageChange(item.id)}
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  paddingVertical: 18,
+                  borderBottomWidth: 1,
+                  borderBottomColor: "#F0F0F0",
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 17,
+                    color: language === item.id ? "#0088FF" : "#363130",
+                    fontWeight: language === item.id ? "700" : "400",
+                  }}
+                >
+                  {item.label}
+                </Text>
+                {language === item.id && (
+                  <Ionicons name="checkmark-circle" size={24} color="#0088FF" />
+                )}
+              </Pressable>
+            ))}
+          </View>
+        </View>
+      </Modal>
+
+      {/* MODAL LOGOUT */}
       <Modal
         animationType="fade"
         transparent={true}
-        visible={isModalVisible}
-        onRequestClose={() => setModalVisible(false)}
+        visible={isLogoutModalVisible}
+        onRequestClose={() => setLogoutModalVisible(false)}
       >
-        {/* Overlay sombre en arrière-plan */}
         <View
           style={{
             flex: 1,
@@ -184,7 +278,6 @@ export default function ProfileScreen() {
             padding: 24,
           }}
         >
-          {/* Conteneur Blanc */}
           <View
             style={{
               backgroundColor: "#FFFFFF",
@@ -202,9 +295,8 @@ export default function ProfileScreen() {
                 marginBottom: 12,
               }}
             >
-              End Session
+              {t("profile.end_session")}
             </Text>
-
             <Text
               style={{
                 fontSize: 16,
@@ -213,15 +305,10 @@ export default function ProfileScreen() {
                 marginBottom: 32,
               }}
             >
-              Are you sure you want to log out?
+              {t("profile.logout_confirmation")}
             </Text>
-
-            {/* Bouton "Yes, End Session" */}
             <Pressable
-              onPress={() => {
-                setModalVisible(false);
-                // Ajoutez votre logique de déconnexion ici (ex: router.replace('/login'))
-              }}
+              onPress={() => setLogoutModalVisible(false)}
               style={{
                 backgroundColor: "#0088FF",
                 width: "100%",
@@ -235,13 +322,11 @@ export default function ProfileScreen() {
               <Text
                 style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "600" }}
               >
-                Yes, End Session
+                {t("profile.yes_end_session")}
               </Text>
             </Pressable>
-
-            {/* Bouton "Cancel" */}
             <Pressable
-              onPress={() => setModalVisible(false)}
+              onPress={() => setLogoutModalVisible(false)}
               style={{
                 backgroundColor: "#DFEFF8",
                 width: "100%",
@@ -254,7 +339,7 @@ export default function ProfileScreen() {
               <Text
                 style={{ color: "#0E3E3E", fontSize: 18, fontWeight: "600" }}
               >
-                Cancel
+                {t("profile.cancel")}
               </Text>
             </Pressable>
           </View>

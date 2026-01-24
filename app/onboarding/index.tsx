@@ -1,3 +1,4 @@
+import { useTranslation } from "@/hooks/useTranslation";
 import { View, FlatList, Animated } from "react-native";
 // import slides from "@/constants/slides-onboarding";
 import OnboardingItem from "@/components/onboarding/OnboardingItem";
@@ -8,6 +9,8 @@ import { useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 
 export default function OnboardingIndex() {
+  const { t } = useTranslation();
+  const slides = t("onboarding.slides");
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef<FlatList<any>>(null);
@@ -20,6 +23,19 @@ export default function OnboardingIndex() {
     { id: "3", title: t("slides.2.title"), image: require("../assets/onbording-img/3.png") },
     { id: "4", title: t("slides.3.title"), image: require("../assets/onbording-img/4.png") },
   ];
+
+  const slidesImages = [
+    require("@/assets/onbording-img/1.png"),
+    require("@/assets/onbording-img/2.png"),
+    require("@/assets/onbording-img/3.png"),
+    require("@/assets/onbording-img/4.png"),
+  ];
+
+  const translatedSlides = slides.map((slide: any, index: number) => ({
+  id: index.toString(),
+  title: slide.title,           // 🟢 prend le titre traduit
+  image: slidesImages[index],   // 🟢 associe l'image correspondante
+}));
 
   const viewableItemsChanged = useRef(({ viewableItems }: any) => {
     setCurrentIndex(viewableItems[0].index);
@@ -39,16 +55,17 @@ export default function OnboardingIndex() {
     <View style={{ flex: 1 }}>
       {/* SLIDES */}
       <FlatList
-        data={slides}
+        data={translatedSlides}
         renderItem={({ item }) => <OnboardingItem item={item} />}
         horizontal
         showsHorizontalScrollIndicator={false}
         pagingEnabled
         bounces={false}
-        keyExtractor={(item) => item.id.toString()}
+        // keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(_, index) => index.toString()}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-          { useNativeDriver: false }
+          { useNativeDriver: false },
         )}
         onViewableItemsChanged={viewableItemsChanged}
         viewabilityConfig={viewConfig}
@@ -65,7 +82,10 @@ export default function OnboardingIndex() {
         }}
       >
         <View style={{ width: "60%", paddingHorizontal: 30 }}>
-          <NextButton onPress={scrollToNext} />
+          <NextButton
+            onPress={scrollToNext}
+            label={t("onboarding.next_button")}
+          />
         </View>
       </View>
 

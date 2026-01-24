@@ -47,3 +47,11 @@ export default [
     image: require("../assets/onbording-img/4.png"),
   },
 ];
+
+const slidesImages = [
+  require("../assets/onbording-img/1.png"),
+  require("../assets/onbording-img/2.png"),
+  require("../assets/onbording-img/3.png"),
+  require("../assets/onbording-img/4.png"),
+];
+
