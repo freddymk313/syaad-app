@@ -1,17 +1,4 @@
 {
-  "slides": [
-    {
-      "title": "Welcome to Expense Manager"
-    },
-    {
-      "title": "Your customs declarations, simplified"
-    },
-    {
-      "title": "Customs has never been easier."
-    },
-    {
-      "title": "Master your customs compliance."
-    }
-  ],
-  "next": "Next"
+  "profile": "Profile",
+  "welcome": "Welcome"
 }
