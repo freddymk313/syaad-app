@@ -6,7 +6,6 @@ import { useRef, useState } from "react";
 import Paginator from "@/components/onboarding/Paginator";
 import NextButton from "@/components/onboarding/NextButton";
 import { useRouter } from "expo-router";
-import { useTranslation } from "react-i18next";
 
 export default function OnboardingIndex() {
   const { t } = useTranslation();
@@ -15,14 +14,6 @@ export default function OnboardingIndex() {
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef<FlatList<any>>(null);
   const router = useRouter();
-  const { t } = useTranslation();
-
-  const slides = [
-    { id: "1", title: t("slides.0.title"), image: require("../assets/onbording-img/1.png") },
-    { id: "2", title: t("slides.1.title"), image: require("../assets/onbording-img/2.png") },
-    { id: "3", title: t("slides.2.title"), image: require("../assets/onbording-img/3.png") },
-    { id: "4", title: t("slides.3.title"), image: require("../assets/onbording-img/4.png") },
-  ];
 
   const slidesImages = [
     require("@/assets/onbording-img/1.png"),
